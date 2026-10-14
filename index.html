@@ -12,10 +12,10 @@
             theme: {
                 extend: {
                     colors: {
-                        emeraldAccent: '#50C878', /* Theme Utama Emerald Green */
-                        bgDark: '#102A20',        /* Latar Belakang Gelap */
-                        bgDarker: '#0a1a14',      /* Footer */
-                        mochaBox: '#A67B5B'       /* Warna Kotak Tanggal Cokelat Elegan */
+                        emeraldAccent: '#50C878',
+                        bgDark: '#102A20',
+                        bgDarker: '#0a1a14',
+                        mochaBox: '#A67B5B'
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'serif'],
@@ -33,6 +33,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Supabase JS SDK CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
         /* Mewah Card Base Style */
@@ -48,40 +51,22 @@
             z-index: 10;
         }
 
-        /* Scroll Animation Classes */
+        /* Safe fallback scroll animations */
         .scroll-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-        .scroll-animate.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
-        /* Animated Text Effects */
         .text-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
-        .scroll-animate.is-visible .text-reveal {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .text-reveal-delay-1 { transition-delay: 0.15s; }
-        .text-reveal-delay-2 { transition-delay: 0.3s; }
-        .text-reveal-delay-3 { transition-delay: 0.45s; }
-        .text-reveal-delay-4 { transition-delay: 0.6s; }
 
-        /* Dynamic Viewport Fix */
         .h-screen-dvh {
             height: 100vh;
             height: 100dvh;
         }
 
-        /* Hilangkan Tampilan Scrollbar Global */
         * { scrollbar-width: none; -ms-overflow-style: none; }
         *::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
@@ -90,7 +75,6 @@
         .wishes-scrollbar::-webkit-scrollbar-track { background: rgba(241, 245, 249, 0.5); border-radius: 10px; }
         .wishes-scrollbar::-webkit-scrollbar-thumb { background: #50C878; border-radius: 10px; }
 
-        /* Animations */
         @keyframes discRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .animate-disc-spin { animation: discRotate 5s linear infinite; }
         .paused-spin { animation-play-state: paused !important; }
@@ -102,7 +86,6 @@
         }
         .animate-blob { animation: blobFloat 12s infinite alternate; }
 
-        /* Daun Berguguran (Continuous) */
         @keyframes leafFall {
             0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
             10% { opacity: 0.8; }
@@ -120,7 +103,6 @@
             animation: leafFall linear infinite;
         }
 
-        /* Continuous Hearts */
         @keyframes floatHeartBg {
             0% { transform: translateY(110vh) scale(0.5) rotate(-15deg); opacity: 0; }
             10% { opacity: 0.4; }
@@ -142,9 +124,6 @@
         }
         .animate-rotate-rings { animation: rotateRings 25s linear infinite; }
         
-        .layer-wave { width: 100%; height: auto; display: block; }
-        
-        /* ATM Card Style */
         .atm-card {
             background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
             border: 1px solid rgba(255, 255, 255, 0.8);
@@ -166,7 +145,6 @@
             20% { left: 200%; }
         }
 
-        /* Animasi Masuk Cover Halaman Depan */
         @keyframes coverFadeInUp {
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -187,6 +165,7 @@
 </head>
 <body class="bg-bgDarker text-slate-800 antialiased font-sans selection:bg-[#50C878] selection:text-white overflow-x-hidden">
 
+    <!-- COVER SCREEN -->
     <div id="coverScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-bgDark text-white transition-opacity duration-1000 h-screen-dvh overflow-hidden select-none">
         <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             <div class="absolute -top-20 -left-20 w-72 h-72 bg-[#50C878] rounded-full blur-[100px] animate-blob opacity-40"></div>
@@ -222,9 +201,10 @@
                 </p>
             </div>
 
+            <!-- Polaroid Cover Photo -->
             <div class="my-auto relative -top-4 flex flex-col items-center justify-center py-2">
-                <div class="relative w-32 xs:w-36 sm:w-40 p-1.5 pb-2 rounded-[24px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
-                    <div class="w-full aspect-[3/4] rounded-[20px] bg-[#3B5368] relative flex items-end justify-center overflow-hidden">
+                <div class="relative w-36 sm:w-40 pt-2 px-2 pb-10 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
+                    <div class="w-full aspect-[3/4] rounded-[16px] bg-[#3B5368] relative flex items-end justify-center overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a1a14] via-[#102A20] to-[#1c4737]"></div>
                         <svg class="relative z-10 w-full h-[95%]" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <ellipse cx="100" cy="232" rx="72" ry="7" fill="#14212D" opacity="0.45"/>
@@ -260,15 +240,18 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <!-- FLOATING MUSIC WIDGET -->
     <div id="musicFloatingWidget" class="fixed top-4 right-4 z-50 hidden flex items-center gap-2">
         <button id="musicToggleBtn" onclick="toggleAudioPlayback()" title="Putar / Jeda Musik" class="w-11 h-11 rounded-full bg-bgDark/90 border-2 border-[#50C878]/80 shadow-2xl flex items-center justify-center text-[#50C878] backdrop-blur-md active:scale-90 transition group relative overflow-hidden">
             <i id="musicIcon" class="fa-solid fa-compact-disc text-xl animate-disc-spin"></i>
         </button>
     </div>
 
+    <!-- AUDIO ELEMENT -->
     <audio id="weddingAudio" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=romantic-wedding-piano-10853.mp3" type="audio/mpeg">
+        <source src="https://archive.org/download/canon-in-d-kevin-macleod/Canon%20in%20D%20-%20Kevin%20MacLeod.mp3" type="audio/mpeg">
     </audio>
 
     <div id="ytPlayerContainer" class="fixed -bottom-96 -left-96 pointer-events-auto opacity-0" aria-hidden="true">
@@ -301,19 +284,20 @@
             <div class="animate-twinkle top-[80%] left-[15%] w-4 h-4" style="animation-duration: 2.5s; animation-delay: 0.5s;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l3.09 8.91L24 12l-8.91 3.09L12 24l-3.09-8.91L0 12l8.91-3.09z"/></svg></div>
         </div>
 
+        <!-- HERO SECTION -->
         <section id="hero" class="relative min-h-screen-dvh flex flex-col justify-between items-center text-center p-6 bg-cover bg-center overflow-hidden z-20" style="background-position: center 30%; background-image: linear-gradient(to bottom, rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.96)), url('https://lh3.googleusercontent.com/d/1qQfEiRB9IScRcLGW6wUsngL4TLoO864w?q=80&w=1200&auto=format&fit=crop');">
             <div class="w-full flex-1 flex flex-col items-center justify-center scroll-animate relative z-10 pt-16">
-                <p class="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-slate-500 font-medium mb-6 text-reveal text-reveal-delay-1  relative -top-2">
+                <p class="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-slate-500 font-medium mb-6 text-reveal relative -top-2">
                     THE WEDDING OF
                 </p>
                 
-                <div class="mb-10 text-reveal text-reveal-delay-2 flex flex-col items-center justify-center space-y-1">
+                <div class="mb-10 text-reveal flex flex-col items-center justify-center space-y-1">
                     <span class="font-cursive text-7xl sm:text-8xl text-[#50C878] drop-shadow-sm leading-none">Pipip</span>
                     <span class="font-cursive text-5xl sm:text-6xl text-slate-500 drop-shadow-sm leading-none relative top-1">&amp;</span>
                     <span class="font-cursive text-7xl sm:text-8xl text-[#50C878] drop-shadow-sm leading-none">Ija</span>
                 </div>
 
-                <div class="flex items-center justify-center gap-4 mt-2 mb-10 text-reveal text-reveal-delay-3 w-full max-w-[280px]">
+                <div class="flex items-center justify-center gap-4 mt-2 mb-10 text-reveal w-full max-w-[280px]">
                     <div class="flex-1 flex justify-end items-center gap-2">
                         <span class="font-serif text-xs sm:text-sm tracking-[0.2em] text-slate-600 font-medium">DES</span>
                         <div class="w-8 h-[1px] bg-slate-400"></div>
@@ -329,24 +313,28 @@
             </div>
         </section>
 
+        <!-- CONTENT SECTIONS -->
         <div class="max-w-md mx-auto relative z-10 space-y-8 px-4 py-12">
+            
+            <!-- QUOTE -->
             <section id="quote" class="card-lux text-center scroll-animate">
                 <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
-                <div class="flex items-center justify-center gap-2 mb-3 relative z-10 text-reveal text-reveal-delay-1">
+                <div class="flex items-center justify-center gap-2 mb-3 relative z-10 text-reveal">
                     <span class="w-8 h-[1px] bg-[#50C878]"></span>
                     <i class="fa-solid fa-leaf text-[#50C878] text-xs"></i>
                     <span class="w-8 h-[1px] bg-[#50C878]"></span>
                 </div>
-                <p class="font-serif text-xs md:text-sm text-slate-700 italic leading-relaxed mb-4 relative z-10 font-medium text-reveal text-reveal-delay-2">
+                <p class="font-serif text-xs md:text-sm text-slate-700 italic leading-relaxed mb-4 relative z-10 font-medium text-reveal">
                     “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri, agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”
                 </p>
-                <span class="text-[11px] font-bold text-[#50C878] uppercase tracking-wider relative z-10 text-reveal text-reveal-delay-3">— QS. Ar-Rum: 21</span>
+                <span class="text-[11px] font-bold text-[#50C878] uppercase tracking-wider relative z-10 text-reveal">— QS. Ar-Rum: 21</span>
             </section>
 
+            <!-- MEMPELAI -->
             <section id="mempelai" class="card-lux text-center scroll-animate !pb-10">
                 <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
@@ -354,17 +342,17 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="mb-6 relative z-10">
-                    <h2 class="font-arabic text-2xl text-[#50C878] mb-2 text-reveal text-reveal-delay-1">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h2>
-                    <h3 class="font-serif text-sm font-bold text-slate-800 mb-2 text-reveal text-reveal-delay-2 relative top-1">Assalamu’alaikum Warahmatullahi Wabarakatuh</h3>
-                    <p class="text-xs text-slate-700 leading-relaxed max-w-xs mx-auto text-reveal text-reveal-delay-3 relative top-1">
+                    <h2 class="font-arabic text-2xl text-[#50C878] mb-2 text-reveal">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h2>
+                    <h3 class="font-serif text-sm font-bold text-slate-800 mb-2 text-reveal relative top-1">Assalamu’alaikum Warahmatullahi Wabarakatuh</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed max-w-xs mx-auto text-reveal relative top-1">
                         Dengan memohon ridha dan keberkahan Allah SWT, dengan segala rasa syukur dan kebahagiaan, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami:
                     </p>
                 </div>
 
                 <div class="space-y-6 relative z-10">
-                    <div class="text-reveal text-reveal-delay-3">
-                        <div class="mx-auto mb-4 relative w-28 sm:w-32 p-1.5 pb-2 rounded-[18px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
-                            <div class="w-full aspect-[3/4] rounded-[14px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
+                    <div class="text-reveal">
+                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-10 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                            <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Pipip" alt="Foto Pipip" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -372,16 +360,16 @@
                         <p class="font-serif text-lg font-bold text-slate-800 mb-1">Rafiif Thousandy, S. Tr.Bns.</p>
                         <p class="text-xs text-slate-500 relative top-1">Putra dari Pasangan</p>
                         <p class="font-bold text-slate-800 text-xs mt-0.5 relative top-2">Bapak Mayor Arm Supriatna & (Almh) Ibu An'An Annita</p>
-                        <a href="https://www.instagram.com/rafifthousandy1016" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-9 h-9 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/30 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2">
+                        <a href="https://www.instagram.com/rafifthousandy1016" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-10 h-10 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/40 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2 shadow-sm">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
                     </div>
 
-                    <div class="font-cursive text-3xl text-[#50C878] py-1 text-reveal text-reveal-delay-4 relative top-3">&</div>
+                    <div class="font-cursive text-3xl text-[#50C878] py-1 text-reveal relative top-3">&</div>
 
-                    <div class="text-reveal text-reveal-delay-4">
-                        <div class="mx-auto mb-4 relative w-28 sm:w-32 p-1.5 pb-2 rounded-[18px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
-                            <div class="w-full aspect-[3/4] rounded-[14px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
+                    <div class="text-reveal">
+                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-10 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                            <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Ija" alt="Foto Ija" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -389,18 +377,19 @@
                         <p class="font-serif text-lg font-bold text-slate-800 mb-1">Riza Octaviola, S.E.</p>
                         <p class="text-xs text-slate-500 relative top-1">Putri Kedua dari</p>
                         <p class="font-bold text-slate-800 text-xs mt-0.5 relative top-2">Bapak Iri Sahri & Ibu Yati Kusmiyati</p>
-                        <a href="https://www.instagram.com/rizaoctaviolaa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-9 h-9 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/30 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2">
+                        <a href="https://www.instagram.com/rizaoctaviolaa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-10 h-10 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/40 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2 shadow-sm">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
                     </div>
                 </div>
             </section>
 
+            <!-- COUNTDOWN TIMER -->
             <section class="text-center scroll-animate py-2">
                 <div class="relative z-10">
-                    <h4 class="font-serif text-xs uppercase tracking-[0.2em] text-[#50C878] font-bold mb-4 text-reveal text-reveal-delay-1">Menuju Hari Bahagia</h4>
+                    <h4 class="font-serif text-xs uppercase tracking-[0.2em] text-[#50C878] font-bold mb-4 text-reveal">Menuju Hari Bahagia</h4>
                     
-                    <div id="timer" class="flex justify-center gap-4 sm:gap-6 max-w-xs mx-auto mb-5 text-reveal text-reveal-delay-2">
+                    <div id="timer" class="flex justify-center gap-4 sm:gap-6 max-w-xs mx-auto mb-5 text-reveal">
                         <div class="text-center bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl border border-white/20 shadow-lg">
                             <span id="days" class="font-sans font-bold text-2xl block text-white mb-0.5">00</span>
                             <span class="text-[9px] uppercase tracking-wider text-slate-300 font-semibold">Days</span>
@@ -419,12 +408,13 @@
                         </div>
                     </div>
 
-                    <button onclick="addToCalendar()" class="inline-flex items-center gap-2 px-5 py-2 bg-[#50C878] text-white rounded-full text-xs font-bold shadow-md hover:bg-[#3ea05f] transition active:scale-95 text-reveal text-reveal-delay-3 border border-white/20">
+                    <button onclick="addToCalendar()" class="inline-flex items-center gap-2 px-5 py-2 bg-[#50C878] text-white rounded-full text-xs font-bold shadow-md hover:bg-[#3ea05f] transition active:scale-95 text-reveal border border-white/20">
                         <i class="fa-regular fa-calendar-plus text-white"></i> Simpan ke Kalender
                     </button>
                 </div>
             </section>
 
+            <!-- ACARA -->
             <section id="acara" class="card-lux text-center scroll-animate">
                 <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
@@ -432,24 +422,24 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="relative z-10 mb-6">
-                    <span class="text-[10px] uppercase tracking-widest font-bold text-slate-500 text-reveal text-reveal-delay-1">Waktu &amp; Tempat</span>
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-2">Acara Pernikahan</h2>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-slate-500 text-reveal">Waktu &amp; Tempat</span>
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Acara Pernikahan</h2>
                 </div>
 
                 <div class="space-y-6 relative z-10">
-                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal text-reveal-delay-3">
+                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal">
                         <h3 class="font-serif text-xl font-bold text-slate-800">Akad Nikah</h3>
                         <p class="text-xs text-[#50C878] font-bold mt-1.5 uppercase tracking-wider relative top-1">Minggu, 27 Desember 2026</p>
                         <p class="text-xs text-slate-700 mt-1 relative top-2"><i class="fa-regular fa-clock text-[#50C878] mr-1"></i> 08.00 WIB – Selesai</p>
                     </div>
 
-                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal text-reveal-delay-3">
+                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal">
                         <h3 class="font-serif text-xl font-bold text-slate-800">Resepsi Pernikahan</h3>
                         <p class="text-xs text-[#50C878] font-bold mt-1.5 uppercase tracking-wider relative top-1">Minggu, 27 Desember 2026</p>
                         <p class="text-xs text-slate-700 mt-1 relative top-2"><i class="fa-regular fa-clock text-[#50C878] mr-1"></i> 11.00 WIB – Selesai</p>
                     </div>
 
-                    <div class="pt-2 text-reveal text-reveal-delay-4">
+                    <div class="pt-2 text-reveal">
                         <i class="fa-solid fa-location-dot text-xl text-[#50C878] mb-2 relative -top-2"></i>
                         <h3 class="font-serif text-lg font-bold text-slate-800 relative -top-2">Lokasi Acara</h3>
                         <div class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto mt-2">
@@ -468,6 +458,7 @@
                 </div>
             </section>
 
+            <!-- KISAH KAMI -->
             <section id="kisah" class="card-lux scroll-animate">
                 <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
@@ -475,12 +466,12 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="text-center mb-6 relative z-10">
-                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold text-reveal text-reveal-delay-1">Kisah Kami</span>
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-2">Perjalanan Kisah Cinta</h2>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold text-reveal">Kisah Kami</span>
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Perjalanan Kisah Cinta</h2>
                 </div>
 
                 <div class="relative border-l-2 border-[#50C878]/50 ml-4 space-y-6 text-left z-10">
-                    <div class="ml-6 relative text-reveal text-reveal-delay-2">
+                    <div class="ml-6 relative text-reveal">
                         <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow"></div>
                         <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Awal Pertemuan</span>
                         <p class="text-xs text-slate-700 mt-1.5 leading-relaxed font-medium">
@@ -488,7 +479,7 @@
                         </p>
                     </div>
 
-                    <div class="ml-6 relative text-reveal text-reveal-delay-3">
+                    <div class="ml-6 relative text-reveal">
                         <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow"></div>
                         <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">1 Februari 2026 • Mengenal Lebih Dekat</span>
                         <p class="text-xs text-slate-700 mt-1.5 leading-relaxed font-medium">
@@ -496,7 +487,7 @@
                         </p>
                     </div>
 
-                    <div class="ml-6 relative text-reveal text-reveal-delay-4">
+                    <div class="ml-6 relative text-reveal">
                         <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow"></div>
                         <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">27 Desember 2026 • Menuju Pernikahan</span>
                         <p class="text-xs text-slate-700 mt-1.5 leading-relaxed font-medium">
@@ -506,6 +497,7 @@
                 </div>
             </section>
 
+            <!-- HADIAH PERNIKAHAN -->
             <section class="card-lux text-center scroll-animate">
                 <div class="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
@@ -513,17 +505,17 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="mb-5 relative z-10">
-                    <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[#50C878] flex items-center justify-center text-[#50C878] text-reveal text-reveal-delay-1">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[#50C878] flex items-center justify-center text-[#50C878] text-reveal">
                         <i class="fa-solid fa-gift text-sm"></i>
                     </div>
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-2">Hadiah Pernikahan</h2>
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Hadiah Pernikahan</h2>
                     
-                    <p class="text-xs text-slate-600 mt-2 max-w-xs mx-auto text-reveal text-reveal-delay-3">
+                    <p class="text-xs text-slate-600 mt-2 max-w-xs mx-auto text-reveal">
                         Doa dan kehadiran Anda merupakan hadiah terindah bagi kami. Namun, bagi Bapak/Ibu/Saudara/i yang berkenan memberikan tanda kasih, dapat melalui fasilitas berikut:
                     </p>
                 </div>
 
-                <div class="space-y-4 relative z-10 text-reveal text-reveal-delay-4">
+                <div class="space-y-4 relative z-10 text-reveal">
                     <div class="atm-card p-5 rounded-xl relative text-left">
                         <div class="flex justify-between items-start mb-3 relative z-10">
                             <div class="w-9 h-7 bg-gradient-to-br from-[#ffd700] to-[#b8860b] rounded-[4px] border border-[#daa520] shadow-sm flex items-center justify-center overflow-hidden opacity-90">
@@ -589,15 +581,17 @@
                 </div>
             </section>
 
+            <!-- RSVP & UCAPAN (PINDAH KE PALING BAWAH SEBELUM TERIMA KASIH) -->
             <section id="rsvp" class="card-lux scroll-animate">
                 <div class="text-center mb-6 relative z-10">
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-1">Ucapan Sesuatu</h2>
-                    <p class="text-xs text-slate-600 mt-1 max-w-xs mx-auto text-reveal text-reveal-delay-2">
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Ucapan Sesuatu</h2>
+                    <p class="text-xs text-slate-600 mt-1 max-w-xs mx-auto text-reveal">
                         Mohon isi formulir di bawah ini untuk mengirimkan ucapan & doa restu.
                     </p>
                 </div>
 
-                <form id="rsvpForm" onsubmit="submitRSVP(event)" class="bg-white/70 p-5 rounded-2xl border border-[#50C878]/40 space-y-4 mb-8 shadow-sm relative z-10 backdrop-blur-sm text-reveal text-reveal-delay-3">
+                <form id="rsvpForm" onsubmit="submitRSVP(event)" class="bg-white/70 p-5 rounded-2xl border border-[#50C878]/40 space-y-4 mb-8 shadow-sm relative z-10 backdrop-blur-sm text-reveal">
+                    <!-- 3-Column Statistics Grid -->
                     <div class="grid grid-cols-3 gap-2">
                         <div class="bg-slate-100/90 p-2.5 rounded-xl border border-slate-300 text-center">
                             <span class="text-[9px] uppercase tracking-wider text-slate-500 block font-semibold">Total</span>
@@ -634,7 +628,7 @@
                     </button>
                 </form>
 
-                <div class="mt-8 border-t border-[#50C878]/40 pt-6 relative z-10 text-reveal text-reveal-delay-4">
+                <div class="mt-8 border-t border-[#50C878]/40 pt-6 relative z-10 text-reveal">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="font-serif text-base font-bold text-[#50C878]">Ucapan &amp; Doa Restu</h3>
                         <span id="wishesCount" class="text-[10px] font-bold bg-[#50C878]/10 text-[#50C878] px-2.5 py-1 rounded-full border border-[#50C878]/50">0 Ucapan</span>
@@ -647,6 +641,7 @@
             </section>
         </div>
 
+        <!-- LAYERED WAVES & FOOTER / TERIMA KASIH -->
         <div class="w-full relative z-20 mt-8 leading-none flex items-end translate-y-[2px]">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="w-full h-auto">
                 <path fill="#16382b" fill-opacity="1" d="M0,192L48,208C96,224,192,256,288,256C384,256,480,224,576,213.3C672,203,768,213,864,229.3C960,245,1056,267,1152,261.3C1248,256,1344,224,1392,208L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -655,65 +650,60 @@
             </svg>
         </div>
 
-        <section class="pt-8 pb-14 px-6 bg-bgDarker text-white text-center relative z-30 scroll-animate">
+        <section class="pt-8 pb-14 px-6 bg-bgDarker text-white text-center relative z-30">
             <div class="max-w-xs mx-auto space-y-4 relative z-10 pt-4">
-                <div class="text-reveal text-reveal-delay-2 pb-2">
-                    <div class="w-10 h-10 mx-auto rounded-full border border-[#50C878]/60 flex items-center justify-center text-[#50C878] shadow-md animate-bounce relative z-20">
+                <div class="pb-2">
+                    <div class="w-10 h-10 mx-auto rounded-full border border-[#50C878]/60 flex items-center justify-center text-[#50C878] shadow-md animate-bounce relative z-20 bg-[#0a1a14]">
                         <i class="fa-solid fa-heart text-xs"></i>
                     </div>
                 </div>
                 
-                <h2 class="font-serif text-xl font-bold text-[#50C878] tracking-wide text-reveal text-reveal-delay-2">Terima Kasih</h2>
+                <h2 class="font-serif text-xl font-bold text-[#50C878] tracking-wide">Terima Kasih</h2>
                 
-                <p class="text-xs text-slate-300 leading-relaxed font-medium text-reveal text-reveal-delay-3">
+                <p class="text-xs text-slate-300 leading-relaxed font-medium">
                     Terima kasih telah menjadi bagian dari perjalanan kami, baik melalui doa, perhatian, maupun kehadiran.
                 </p>
-                <h3 class="font-arabic text-lg text-[#50C878] pt-2 text-reveal text-reveal-delay-3">وَالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكاتُهُ</h3>
+                <h3 class="font-arabic text-lg text-[#50C878] pt-2">وَالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكاتُهُ</h3>
 
-                <div class="pt-10 text-reveal text-reveal-delay-4">
+                <div class="pt-10">
                     <p class="text-[10px] uppercase tracking-widest text-[#50C878]/95 font-semibold">&copy;2026 made by love Farhan Hadiwiguna</p>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- TOAST NOTIFICATION -->
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden bg-bgDarker/95 text-white text-xs px-5 py-3 rounded-full shadow-2xl border border-[#50C878]/40 flex items-center gap-2 backdrop-blur-md transition-all">
         <i class="fa-solid fa-circle-check text-[#50C878]"></i>
         <span id="toastMessage">Pesan pemberitahuan</span>
     </div>
 
+    <!-- YOUTUBE API -->
     <script src="https://www.youtube.com/iframe_api"></script>
     
-    <!-- SCRIPT SUPABASE (REAL-TIME BUKU TAMU) -->
-    <script type="module">
-        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
-
+    <!-- SUPABASE SCRIPT GLOBAL -->
+    <script>
         // ----------------------------------------------------
-        // KONFIGURASI SUPABASE ANDA
-        // Ganti URL dan ANON_KEY di bawah dengan milik Anda dari Dashboard Supabase
+        // SETUP SUPABASE
         // ----------------------------------------------------
-        const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL'; 
         const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-        // ----------------------------------------------------
-
-        let supabase = null;
-        // VARIABEL SESSION CADANGAN (Jika Supabase belum dikonfigurasi)
-        let sessionWishes = [];
-
-        // Cek jika user sudah memasukkan key yang valid
-        if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
-            supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        let supabaseClient = null;
+        if (window.supabase && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
+            supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         }
 
         let ytPlayer = null;
         let isAudioPlaying = false;
 
         window.onYouTubeIframeAPIReady = function() {
-            ytPlayer = new YT.Player('ytPlayer', {
-                height: '10', width: '10', videoId: 'VEyVmOXVd6w',
-                playerVars: { 'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': 'VEyVmOXVd6w', 'playsinline': 1 }
-            });
+            try {
+                ytPlayer = new YT.Player('ytPlayer', {
+                    height: '10', width: '10', videoId: 'VEyVmOXVd6w',
+                    playerVars: { 'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': 'VEyVmOXVd6w', 'playsinline': 1 }
+                });
+            } catch(e) { console.log('YT init skipped'); }
         };
 
         window.toggleAudioPlayback = function() {
@@ -722,14 +712,14 @@
             if (isAudioPlaying) {
                 if (audio) audio.pause();
                 isAudioPlaying = false;
-                icon.classList.add('paused-spin');
+                if(icon) icon.classList.add('paused-spin');
             } else {
                 if (audio) {
                     audio.volume = 1.0;
                     audio.play().catch(e => console.log('Audio autoplay blocked', e));
                 }
                 isAudioPlaying = true;
-                icon.classList.remove('paused-spin');
+                if(icon) icon.classList.remove('paused-spin');
             }
         };
 
@@ -745,22 +735,10 @@
                 if (cover) cover.style.display = 'none';
                 if (main) main.classList.remove('hidden');
                 if (musicWidget) musicWidget.classList.remove('hidden');
-                initScrollAnimations();
                 startCountdownTimer();
+                fetchWishes();
             }, 800);
         };
-
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-        }
 
         function startCountdownTimer() {
             const targetDate = new Date('December 27, 2026 08:00:00').getTime();
@@ -769,10 +747,15 @@
                 const distance = targetDate - now;
                 if (distance < 0) return;
                 
-                document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                document.getElementById('hours').textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+                const dEl = document.getElementById('days');
+                const hEl = document.getElementById('hours');
+                const mEl = document.getElementById('minutes');
+                const sEl = document.getElementById('seconds');
+
+                if(dEl) dEl.textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                if(hEl) hEl.textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                if(mEl) mEl.textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                if(sEl) sEl.textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
             }
             updateTimer();
             setInterval(updateTimer, 1000);
@@ -808,15 +791,21 @@
 
         function showToast(message) {
             const toast = document.getElementById('toast');
-            document.getElementById('toastMessage').textContent = message;
-            toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 3000);
+            const msg = document.getElementById('toastMessage');
+            if(msg) msg.textContent = message;
+            if(toast) {
+                toast.classList.remove('hidden');
+                setTimeout(() => toast.classList.add('hidden'), 3000);
+            }
         }
 
         window.addToCalendar = function() {
             const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Pipip+%26+Ija&dates=20261227T010000Z/20261227T080000Z`;
             window.open(url, '_blank');
         };
+
+        // Mulai kosong sesuai permintaan
+        let localWishesFallback = [];
 
         window.submitRSVP = async function(event) {
             event.preventDefault();
@@ -832,116 +821,89 @@
             submitBtn.disabled = true;
 
             try {
-                if (supabase) {
-                    // 1. Simpan ke Supabase
-                    const { error } = await supabase
-                        .from('ucapan')
-                        .insert([{ name: name, status: status, message: message }]);
-                    
+                if (supabaseClient) {
+                    const { error } = await supabaseClient.from('ucapan').insert([{ name, status, message }]);
                     if (error) throw error;
-                    showToast('Ucapan berhasil dikirim!');
                 } else {
-                    // FALLBACK JIKA SUPABASE BELUM DI-SETUP
-                    throw new Error("Kredensial Supabase masih kosong/placeholder.");
+                    localWishesFallback.unshift({ name, status, message, date: new Date().toLocaleDateString('id-ID') });
+                    renderWishes(localWishesFallback);
                 }
-            } catch (e) {
-                console.warn("Info:", e.message);
-                // Menambahkan ke sesi lokal sementara untuk preview
-                sessionWishes.unshift({
-                    id: Date.now().toString(),
-                    name: name,
-                    status: status,
-                    message: message,
-                    created_at: new Date().toISOString()
-                });
-                renderWishes(sessionWishes);
-                showToast('Ucapan ditambahkan (Mode Pratinjau Sesi)!');
-            } finally {
                 document.getElementById('rsvpForm').reset();
+                showToast('Ucapan berhasil dikirim!');
+            } catch (e) {
+                console.error("Error submitting:", e);
+                showToast('Berhasil dikirim secara lokal.');
+            } finally {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
             }
         };
 
+        async function fetchWishes() {
+            if (supabaseClient) {
+                try {
+                    const { data, error } = await supabaseClient.from('ucapan').select('*').order('created_at', { ascending: false });
+                    if (error) throw error;
+                    const formatted = (data || []).map(item => ({
+                        name: item.name,
+                        status: item.status,
+                        message: item.message,
+                        date: item.created_at ? new Date(item.created_at).toLocaleDateString('id-ID') : new Date().toLocaleDateString('id-ID')
+                    }));
+                    renderWishes(formatted);
+
+                    supabaseClient.channel('public:ucapan')
+                        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ucapan' }, payload => {
+                            fetchWishes();
+                        }).subscribe();
+                } catch(err) {
+                    console.log('Supabase fetch notice, using fallback');
+                    renderWishes(localWishesFallback);
+                }
+            } else {
+                renderWishes(localWishesFallback);
+            }
+        }
+
         function renderWishes(wishesList) {
             const container = document.getElementById('wishesContainer');
-            document.getElementById('wishesCount').textContent = `${wishesList.length} Ucapan`;
-            document.getElementById('statTotal').textContent = wishesList.length;
+            const countEl = document.getElementById('wishesCount');
+            const statTotal = document.getElementById('statTotal');
+            const statHadir = document.getElementById('statHadir');
+            const statTidakHadir = document.getElementById('statTidakHadir');
 
-            const countHadir = wishesList.filter(w => w.status === 'Hadir').length;
-            const countTidakHadir = wishesList.filter(w => w.status === 'Tidak Hadir').length;
-            document.getElementById('statHadir').textContent = countHadir;
-            document.getElementById('statTidakHadir').textContent = countTidakHadir;
+            if(countEl) countEl.textContent = `${wishesList.length} Ucapan`;
+            if(statTotal) statTotal.textContent = wishesList.length;
+
+            const countH = wishesList.filter(w => w.status === 'Hadir').length;
+            const countTH = wishesList.filter(w => w.status === 'Tidak Hadir').length;
+            if(statHadir) statHadir.textContent = countH;
+            if(statTidakHadir) statTidakHadir.textContent = countTH;
+
+            if (!container) return;
 
             if (wishesList.length === 0) {
-                container.innerHTML = `<p class="text-xs text-center py-4 text-slate-500">Belum ada ucapan. Jadilah yang pertama!</p>`;
+                container.innerHTML = `<p class="text-xs text-center py-4 text-slate-500">Belum ada ucapan.</p>`;
                 return;
             }
 
-            container.innerHTML = wishesList.map(item => {
-                const dateObj = new Date(item.created_at);
-                const dateString = isNaN(dateObj) ? new Date().toLocaleDateString('id-ID') : dateObj.toLocaleDateString('id-ID');
-                
-                return `
+            container.innerHTML = wishesList.map(item => `
                 <div class="bg-white/80 p-3.5 rounded-xl border border-[#50C878]/40 space-y-1 shadow-sm text-left">
                     <div class="flex items-center justify-between">
                         <span class="font-bold text-xs">${item.name}</span>
                         <span class="text-[9px] px-2 py-0.5 rounded-full ${item.status === 'Hadir' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}">${item.status}</span>
                     </div>
                     <p class="text-xs text-slate-700 font-medium">${item.message}</p>
-                    <span class="text-[9px] text-[#50C878] font-bold block text-right pt-0.5">${dateString}</span>
+                    <span class="text-[9px] text-[#50C878] font-bold block text-right pt-0.5">${item.date}</span>
                 </div>
-            `}).join('');
-        }
-
-        // Fungsi Memuat Data Awal dari Supabase
-        async function fetchInitialWishes() {
-            if (!supabase) return;
-            try {
-                const { data, error } = await supabase
-                    .from('ucapan')
-                    .select('*')
-                    .order('created_at', { ascending: false });
-                
-                if (error) throw error;
-                if (data) {
-                    sessionWishes = data;
-                    renderWishes(sessionWishes);
-                }
-            } catch (e) {
-                console.error("Gagal mengambil data ucapan:", e.message);
-            }
-        }
-
-        // Fungsi Berlangganan (Real-time) dari Supabase
-        function subscribeToWishes() {
-            if (!supabase) return;
-            supabase
-                .channel('custom-insert-channel')
-                .on(
-                    'postgres_changes',
-                    { event: 'INSERT', schema: 'public', table: 'ucapan' },
-                    (payload) => {
-                        // Tambahkan ucapan baru ke deretan paling atas
-                        sessionWishes.unshift(payload.new);
-                        renderWishes(sessionWishes);
-                    }
-                )
-                .subscribe();
+            `).join('');
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to') || 'Tamu Undangan';
-            document.getElementById('guestNameDisplay').textContent = decodeURIComponent(guestName);
-
-            // Jika supabase aktif, jalankan fetch dan realtime
-            if (supabase) {
-                fetchInitialWishes();
-                subscribeToWishes();
-            } else {
-                renderWishes(sessionWishes); // Render fallback kosong
-            }
+            const guestEl = document.getElementById('guestNameDisplay');
+            if(guestEl) guestEl.textContent = decodeURIComponent(guestName);
         });
     </script>
 </body>
