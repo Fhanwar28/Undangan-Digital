@@ -178,7 +178,6 @@
 </head>
 <body class="bg-bgDarker text-slate-800 antialiased font-sans selection:bg-[#50C878] selection:text-white overflow-x-hidden">
 
-    <!-- COVER SCREEN -->
     <div id="coverScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-bgDark text-white transition-opacity duration-1000 h-screen-dvh overflow-hidden select-none">
         <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             <div class="absolute -top-20 -left-20 w-72 h-72 bg-[#50C878] rounded-full blur-[100px] animate-blob opacity-40"></div>
@@ -215,7 +214,7 @@
             </div>
 
             <div class="my-auto relative -top-4 flex flex-col items-center justify-center py-2">
-                <div class="relative w-32 xs:w-36 sm:w-40 p-1.5 pb-2 rounded-[24px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
+                <div class="relative w-32 xs:w-36 sm:w-40 p-1.5 pb-8 rounded-[24px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
                     <div class="w-full aspect-[3/4] rounded-[20px] bg-[#3B5368] relative flex items-end justify-center overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a1a14] via-[#102A20] to-[#1c4737]"></div>
                         <svg class="relative z-10 w-full h-[95%]" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -254,7 +253,6 @@
         </div>
     </div>
 
-    <!-- FLOATING MUSIC WIDGET -->
     <div id="musicFloatingWidget" class="fixed top-4 right-4 z-50 hidden flex items-center gap-2">
         <button id="musicToggleBtn" onclick="toggleAudioPlayback()" title="Putar / Jeda Musik" class="w-11 h-11 rounded-full bg-bgDark/90 border-2 border-[#50C878]/80 shadow-2xl flex items-center justify-center text-[#50C878] backdrop-blur-md active:scale-90 transition group relative overflow-hidden">
             <i id="musicIcon" class="fa-solid fa-compact-disc text-xl animate-disc-spin"></i>
@@ -363,8 +361,8 @@
 
                 <div class="space-y-6 relative z-10">
                     <div class="text-reveal text-reveal-delay-3">
-                        <div class="mx-auto mb-4 relative w-28 sm:w-32 p-1.5 pb-2 rounded-[18px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
-                            <div class="w-full aspect-[3/4] rounded-[14px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
+                        <div class="mx-auto mb-4 relative w-32 sm:w-36 p-2 pb-8 rounded-[22px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                            <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Pipip" alt="Foto Pipip" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -380,8 +378,8 @@
                     <div class="font-cursive text-3xl text-[#50C878] py-1 text-reveal text-reveal-delay-4 relative top-3">&</div>
 
                     <div class="text-reveal text-reveal-delay-4">
-                        <div class="mx-auto mb-4 relative w-28 sm:w-32 p-1.5 pb-2 rounded-[18px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
-                            <div class="w-full aspect-[3/4] rounded-[14px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
+                        <div class="mx-auto mb-4 relative w-32 sm:w-36 p-2 pb-8 rounded-[22px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                            <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Ija" alt="Foto Ija" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -593,7 +591,7 @@
                 </div>
             </section>
 
-            <!-- UCAPAN SESUATU (RSVP) - DIPINDAHKAN KE PALING BAWAH SEBELUM TERIMA KASIH -->
+            <!-- UCAPAN SESUATU (RSVP) - DI PALING BAWAH SEBELUM TERIMA KASIH -->
             <section id="rsvp" class="card-lux scroll-animate">
                 <div class="text-center mb-6 relative z-10">
                     <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-1">Ucapan Sesuatu</h2>
@@ -661,7 +659,7 @@
             </svg>
         </div>
 
-        <section class="pt-8 pb-14 px-6 bg-bgDarker text-white text-center relative z-30">
+        <section class="pt-12 pb-16 px-6 bg-bgDarker text-white text-center relative z-30">
             <div class="max-w-xs mx-auto space-y-4 relative z-10 pt-4">
                 <div class="pb-2">
                     <div class="w-10 h-10 mx-auto rounded-full border border-[#50C878]/60 flex items-center justify-center text-[#50C878] shadow-md animate-bounce relative z-20 bg-[#0a1a14]">
@@ -772,10 +770,9 @@
             }, { threshold: 0.1 });
             document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
             
-            // Fallback untuk memastikan konten selalu muncul
             setTimeout(() => {
                 document.querySelectorAll('.scroll-animate').forEach(el => el.classList.add('is-visible'));
-            }, 1200);
+            }, 800);
         }
 
         function startCountdownTimer() {
