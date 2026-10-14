@@ -38,7 +38,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
-        /* Mewah Card Base Style */
         .card-lux {
             background-color: #F8FAFC;
             background-image: radial-gradient(circle at center, #FFFFFF 0%, #F1F5F9 100%);
@@ -51,7 +50,6 @@
             z-index: 10;
         }
 
-        /* Safe fallback scroll animations */
         .scroll-animate {
             opacity: 1 !important;
             transform: translateY(0) !important;
@@ -203,7 +201,7 @@
 
             <!-- Polaroid Cover Photo -->
             <div class="my-auto relative -top-4 flex flex-col items-center justify-center py-2">
-                <div class="relative w-36 sm:w-40 pt-2 px-2 pb-10 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
+                <div class="relative w-36 sm:w-40 pt-2 px-2 pb-12 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
                     <div class="w-full aspect-[3/4] rounded-[16px] bg-[#3B5368] relative flex items-end justify-center overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a1a14] via-[#102A20] to-[#1c4737]"></div>
                         <svg class="relative z-10 w-full h-[95%]" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -249,9 +247,9 @@
         </button>
     </div>
 
-    <!-- AUDIO ELEMENT -->
+    <!-- AUDIO ELEMENT - Thanks God I Found You (Mariah Carey) -->
     <audio id="weddingAudio" loop preload="auto">
-        <source src="https://archive.org/download/canon-in-d-kevin-macleod/Canon%20in%20D%20-%20Kevin%20MacLeod.mp3" type="audio/mpeg">
+        <source src="https://archive.org/download/ThanksGodIFoundYou_201803/Thanks%20God%20I%20Found%20You.mp3" type="audio/mpeg">
     </audio>
 
     <div id="ytPlayerContainer" class="fixed -bottom-96 -left-96 pointer-events-auto opacity-0" aria-hidden="true">
@@ -351,7 +349,7 @@
 
                 <div class="space-y-6 relative z-10">
                     <div class="text-reveal">
-                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-10 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-12 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
                             <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Pipip" alt="Foto Pipip" class="w-full h-full object-cover">
                             </div>
@@ -368,7 +366,7 @@
                     <div class="font-cursive text-3xl text-[#50C878] py-1 text-reveal relative top-3">&</div>
 
                     <div class="text-reveal">
-                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-10 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-12 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
                             <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Ija" alt="Foto Ija" class="w-full h-full object-cover">
                             </div>
@@ -681,7 +679,7 @@
     <!-- YOUTUBE API -->
     <script src="https://www.youtube.com/iframe_api"></script>
     
-    <!-- SUPABASE SCRIPT GLOBAL -->
+    <!-- SUPABASE & APP SCRIPT -->
     <script>
         // ----------------------------------------------------
         // SETUP SUPABASE
@@ -716,7 +714,9 @@
             } else {
                 if (audio) {
                     audio.volume = 1.0;
-                    audio.play().catch(e => console.log('Audio autoplay blocked', e));
+                    audio.play().catch(e => {
+                        console.log('Audio autoplay blocked, trying fallback', e);
+                    });
                 }
                 isAudioPlaying = true;
                 if(icon) icon.classList.remove('paused-spin');
@@ -804,7 +804,7 @@
             window.open(url, '_blank');
         };
 
-        // Mulai kosong sesuai permintaan
+        // Memulai daftar ucapan dengan kosong bersih
         let localWishesFallback = [];
 
         window.submitRSVP = async function(event) {
