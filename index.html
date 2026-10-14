@@ -34,7 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..800;1,400..800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Supabase JS SDK CDN -->
+    <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
@@ -51,14 +51,29 @@
         }
 
         .scroll-animate {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .scroll-animate.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .text-reveal {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .scroll-animate.is-visible .text-reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .text-reveal-delay-1 { transition-delay: 0.15s; }
+        .text-reveal-delay-2 { transition-delay: 0.3s; }
+        .text-reveal-delay-3 { transition-delay: 0.45s; }
+        .text-reveal-delay-4 { transition-delay: 0.6s; }
 
         .h-screen-dvh {
             height: 100vh;
@@ -199,10 +214,9 @@
                 </p>
             </div>
 
-            <!-- Polaroid Cover Photo -->
             <div class="my-auto relative -top-4 flex flex-col items-center justify-center py-2">
-                <div class="relative w-36 sm:w-40 pt-2 px-2 pb-12 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
-                    <div class="w-full aspect-[3/4] rounded-[16px] bg-[#3B5368] relative flex items-end justify-center overflow-hidden">
+                <div class="relative w-32 xs:w-36 sm:w-40 p-1.5 pb-2 rounded-[24px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-2xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
+                    <div class="w-full aspect-[3/4] rounded-[20px] bg-[#3B5368] relative flex items-end justify-center overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a1a14] via-[#102A20] to-[#1c4737]"></div>
                         <svg class="relative z-10 w-full h-[95%]" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <ellipse cx="100" cy="232" rx="72" ry="7" fill="#14212D" opacity="0.45"/>
@@ -247,7 +261,7 @@
         </button>
     </div>
 
-    <!-- AUDIO ELEMENT - Thanks God I Found You (Mariah Carey) -->
+    <!-- AUDIO BACKUP & YOUTUBE PLAYER FOR THANK GOD I FOUND YOU -->
     <audio id="weddingAudio" loop preload="auto">
         <source src="https://archive.org/download/ThanksGodIFoundYou_201803/Thanks%20God%20I%20Found%20You.mp3" type="audio/mpeg">
     </audio>
@@ -285,17 +299,17 @@
         <!-- HERO SECTION -->
         <section id="hero" class="relative min-h-screen-dvh flex flex-col justify-between items-center text-center p-6 bg-cover bg-center overflow-hidden z-20" style="background-position: center 30%; background-image: linear-gradient(to bottom, rgba(248, 250, 252, 0.82), rgba(248, 250, 252, 0.96)), url('https://lh3.googleusercontent.com/d/1qQfEiRB9IScRcLGW6wUsngL4TLoO864w?q=80&w=1200&auto=format&fit=crop');">
             <div class="w-full flex-1 flex flex-col items-center justify-center scroll-animate relative z-10 pt-16">
-                <p class="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-slate-500 font-medium mb-6 text-reveal relative -top-2">
+                <p class="text-[10px] sm:text-xs uppercase tracking-[0.4em] text-slate-500 font-medium mb-6 text-reveal text-reveal-delay-1 relative -top-2">
                     THE WEDDING OF
                 </p>
                 
-                <div class="mb-10 text-reveal flex flex-col items-center justify-center space-y-1">
+                <div class="mb-10 text-reveal text-reveal-delay-2 flex flex-col items-center justify-center space-y-1">
                     <span class="font-cursive text-7xl sm:text-8xl text-[#50C878] drop-shadow-sm leading-none">Pipip</span>
                     <span class="font-cursive text-5xl sm:text-6xl text-slate-500 drop-shadow-sm leading-none relative top-1">&amp;</span>
                     <span class="font-cursive text-7xl sm:text-8xl text-[#50C878] drop-shadow-sm leading-none">Ija</span>
                 </div>
 
-                <div class="flex items-center justify-center gap-4 mt-2 mb-10 text-reveal w-full max-w-[280px]">
+                <div class="flex items-center justify-center gap-4 mt-2 mb-10 text-reveal text-reveal-delay-3 w-full max-w-[280px]">
                     <div class="flex-1 flex justify-end items-center gap-2">
                         <span class="font-serif text-xs sm:text-sm tracking-[0.2em] text-slate-600 font-medium">DES</span>
                         <div class="w-8 h-[1px] bg-slate-400"></div>
@@ -321,15 +335,15 @@
                 <div class="absolute bottom-2 left-2 w-8 h-8 border-b-2 border-l-2 border-[#50C878]/70 pointer-events-none"></div>
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
-                <div class="flex items-center justify-center gap-2 mb-3 relative z-10 text-reveal">
+                <div class="flex items-center justify-center gap-2 mb-3 relative z-10 text-reveal text-reveal-delay-1">
                     <span class="w-8 h-[1px] bg-[#50C878]"></span>
                     <i class="fa-solid fa-leaf text-[#50C878] text-xs"></i>
                     <span class="w-8 h-[1px] bg-[#50C878]"></span>
                 </div>
-                <p class="font-serif text-xs md:text-sm text-slate-700 italic leading-relaxed mb-4 relative z-10 font-medium text-reveal">
+                <p class="font-serif text-xs md:text-sm text-slate-700 italic leading-relaxed mb-4 relative z-10 font-medium text-reveal text-reveal-delay-2">
                     “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri, agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”
                 </p>
-                <span class="text-[11px] font-bold text-[#50C878] uppercase tracking-wider relative z-10 text-reveal">— QS. Ar-Rum: 21</span>
+                <span class="text-[11px] font-bold text-[#50C878] uppercase tracking-wider relative z-10 text-reveal text-reveal-delay-3">— QS. Ar-Rum: 21</span>
             </section>
 
             <!-- MEMPELAI -->
@@ -340,17 +354,17 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="mb-6 relative z-10">
-                    <h2 class="font-arabic text-2xl text-[#50C878] mb-2 text-reveal">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h2>
-                    <h3 class="font-serif text-sm font-bold text-slate-800 mb-2 text-reveal relative top-1">Assalamu’alaikum Warahmatullahi Wabarakatuh</h3>
-                    <p class="text-xs text-slate-700 leading-relaxed max-w-xs mx-auto text-reveal relative top-1">
+                    <h2 class="font-arabic text-2xl text-[#50C878] mb-2 text-reveal text-reveal-delay-1">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h2>
+                    <h3 class="font-serif text-sm font-bold text-slate-800 mb-2 text-reveal text-reveal-delay-2 relative top-1">Assalamu’alaikum Warahmatullahi Wabarakatuh</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed max-w-xs mx-auto text-reveal text-reveal-delay-3 relative top-1">
                         Dengan memohon ridha dan keberkahan Allah SWT, dengan segala rasa syukur dan kebahagiaan, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir pada acara pernikahan kami:
                     </p>
                 </div>
 
                 <div class="space-y-6 relative z-10">
-                    <div class="text-reveal">
-                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-12 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
-                            <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
+                    <div class="text-reveal text-reveal-delay-3">
+                        <div class="mx-auto mb-4 relative w-28 sm:w-32 p-1.5 pb-2 rounded-[18px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                            <div class="w-full aspect-[3/4] rounded-[14px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Pipip" alt="Foto Pipip" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -358,16 +372,16 @@
                         <p class="font-serif text-lg font-bold text-slate-800 mb-1">Rafiif Thousandy, S. Tr.Bns.</p>
                         <p class="text-xs text-slate-500 relative top-1">Putra dari Pasangan</p>
                         <p class="font-bold text-slate-800 text-xs mt-0.5 relative top-2">Bapak Mayor Arm Supriatna & (Almh) Ibu An'An Annita</p>
-                        <a href="https://www.instagram.com/rafifthousandy1016" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-10 h-10 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/40 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2 shadow-sm">
+                        <a href="https://www.instagram.com/rafifthousandy1016" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-9 h-9 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/30 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
                     </div>
 
-                    <div class="font-cursive text-3xl text-[#50C878] py-1 text-reveal relative top-3">&</div>
+                    <div class="font-cursive text-3xl text-[#50C878] py-1 text-reveal text-reveal-delay-4 relative top-3">&</div>
 
-                    <div class="text-reveal">
-                        <div class="mx-auto mb-4 relative w-32 sm:w-36 pt-2 px-2 pb-12 rounded-[22px] bg-gradient-to-b from-white via-slate-100 to-white backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
-                            <div class="w-full aspect-[3/4] rounded-[16px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
+                    <div class="text-reveal text-reveal-delay-4">
+                        <div class="mx-auto mb-4 relative w-28 sm:w-32 p-1.5 pb-2 rounded-[18px] bg-gradient-to-b from-white/95 via-slate-100/90 to-white/95 backdrop-blur-md shadow-xl border border-white/80 ring-1 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300">
+                            <div class="w-full aspect-[3/4] rounded-[14px] bg-[#102A20] relative flex items-center justify-center overflow-hidden">
                                 <img src="https://placehold.co/200x300/102A20/50C878?text=Foto+Ija" alt="Foto Ija" class="w-full h-full object-cover">
                             </div>
                         </div>
@@ -375,7 +389,7 @@
                         <p class="font-serif text-lg font-bold text-slate-800 mb-1">Riza Octaviola, S.E.</p>
                         <p class="text-xs text-slate-500 relative top-1">Putri Kedua dari</p>
                         <p class="font-bold text-slate-800 text-xs mt-0.5 relative top-2">Bapak Iri Sahri & Ibu Yati Kusmiyati</p>
-                        <a href="https://www.instagram.com/rizaoctaviolaa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-10 h-10 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/40 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2 shadow-sm">
+                        <a href="https://www.instagram.com/rizaoctaviolaa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center mt-5 w-9 h-9 bg-[#50C878]/10 text-[#50C878] border border-[#50C878]/30 rounded-full hover:bg-[#50C878] hover:text-white transition-all duration-300 relative top-2">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
                     </div>
@@ -385,9 +399,9 @@
             <!-- COUNTDOWN TIMER -->
             <section class="text-center scroll-animate py-2">
                 <div class="relative z-10">
-                    <h4 class="font-serif text-xs uppercase tracking-[0.2em] text-[#50C878] font-bold mb-4 text-reveal">Menuju Hari Bahagia</h4>
+                    <h4 class="font-serif text-xs uppercase tracking-[0.2em] text-[#50C878] font-bold mb-4 text-reveal text-reveal-delay-1">Menuju Hari Bahagia</h4>
                     
-                    <div id="timer" class="flex justify-center gap-4 sm:gap-6 max-w-xs mx-auto mb-5 text-reveal">
+                    <div id="timer" class="flex justify-center gap-4 sm:gap-6 max-w-xs mx-auto mb-5 text-reveal text-reveal-delay-2">
                         <div class="text-center bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl border border-white/20 shadow-lg">
                             <span id="days" class="font-sans font-bold text-2xl block text-white mb-0.5">00</span>
                             <span class="text-[9px] uppercase tracking-wider text-slate-300 font-semibold">Days</span>
@@ -406,7 +420,7 @@
                         </div>
                     </div>
 
-                    <button onclick="addToCalendar()" class="inline-flex items-center gap-2 px-5 py-2 bg-[#50C878] text-white rounded-full text-xs font-bold shadow-md hover:bg-[#3ea05f] transition active:scale-95 text-reveal border border-white/20">
+                    <button onclick="addToCalendar()" class="inline-flex items-center gap-2 px-5 py-2 bg-[#50C878] text-white rounded-full text-xs font-bold shadow-md hover:bg-[#3ea05f] transition active:scale-95 text-reveal text-reveal-delay-3 border border-white/20">
                         <i class="fa-regular fa-calendar-plus text-white"></i> Simpan ke Kalender
                     </button>
                 </div>
@@ -420,24 +434,24 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="relative z-10 mb-6">
-                    <span class="text-[10px] uppercase tracking-widest font-bold text-slate-500 text-reveal">Waktu &amp; Tempat</span>
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Acara Pernikahan</h2>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-slate-500 text-reveal text-reveal-delay-1">Waktu &amp; Tempat</span>
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-2">Acara Pernikahan</h2>
                 </div>
 
                 <div class="space-y-6 relative z-10">
-                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal">
+                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal text-reveal-delay-3">
                         <h3 class="font-serif text-xl font-bold text-slate-800">Akad Nikah</h3>
                         <p class="text-xs text-[#50C878] font-bold mt-1.5 uppercase tracking-wider relative top-1">Minggu, 27 Desember 2026</p>
                         <p class="text-xs text-slate-700 mt-1 relative top-2"><i class="fa-regular fa-clock text-[#50C878] mr-1"></i> 08.00 WIB – Selesai</p>
                     </div>
 
-                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal">
+                    <div class="pb-5 border-b border-[#50C878]/30 border-dashed text-reveal text-reveal-delay-3">
                         <h3 class="font-serif text-xl font-bold text-slate-800">Resepsi Pernikahan</h3>
                         <p class="text-xs text-[#50C878] font-bold mt-1.5 uppercase tracking-wider relative top-1">Minggu, 27 Desember 2026</p>
                         <p class="text-xs text-slate-700 mt-1 relative top-2"><i class="fa-regular fa-clock text-[#50C878] mr-1"></i> 11.00 WIB – Selesai</p>
                     </div>
 
-                    <div class="pt-2 text-reveal">
+                    <div class="pt-2 text-reveal text-reveal-delay-4">
                         <i class="fa-solid fa-location-dot text-xl text-[#50C878] mb-2 relative -top-2"></i>
                         <h3 class="font-serif text-lg font-bold text-slate-800 relative -top-2">Lokasi Acara</h3>
                         <div class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto mt-2">
@@ -464,12 +478,12 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="text-center mb-6 relative z-10">
-                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold text-reveal">Kisah Kami</span>
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Perjalanan Kisah Cinta</h2>
+                    <span class="text-[10px] uppercase tracking-widest text-slate-500 font-bold text-reveal text-reveal-delay-1">Kisah Kami</span>
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-2">Perjalanan Kisah Cinta</h2>
                 </div>
 
                 <div class="relative border-l-2 border-[#50C878]/50 ml-4 space-y-6 text-left z-10">
-                    <div class="ml-6 relative text-reveal">
+                    <div class="ml-6 relative text-reveal text-reveal-delay-2">
                         <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow"></div>
                         <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Awal Pertemuan</span>
                         <p class="text-xs text-slate-700 mt-1.5 leading-relaxed font-medium">
@@ -477,7 +491,7 @@
                         </p>
                     </div>
 
-                    <div class="ml-6 relative text-reveal">
+                    <div class="ml-6 relative text-reveal text-reveal-delay-3">
                         <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow"></div>
                         <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">1 Februari 2026 • Mengenal Lebih Dekat</span>
                         <p class="text-xs text-slate-700 mt-1.5 leading-relaxed font-medium">
@@ -485,7 +499,7 @@
                         </p>
                     </div>
 
-                    <div class="ml-6 relative text-reveal">
+                    <div class="ml-6 relative text-reveal text-reveal-delay-4">
                         <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow"></div>
                         <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">27 Desember 2026 • Menuju Pernikahan</span>
                         <p class="text-xs text-slate-700 mt-1.5 leading-relaxed font-medium">
@@ -503,17 +517,17 @@
                 <div class="absolute bottom-2 right-2 w-8 h-8 border-b-2 border-r-2 border-[#50C878]/70 pointer-events-none"></div>
 
                 <div class="mb-5 relative z-10">
-                    <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[#50C878] flex items-center justify-center text-[#50C878] text-reveal">
+                    <div class="w-10 h-10 mx-auto mb-2 rounded-full border border-[#50C878] flex items-center justify-center text-[#50C878] text-reveal text-reveal-delay-1">
                         <i class="fa-solid fa-gift text-sm"></i>
                     </div>
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Hadiah Pernikahan</h2>
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-2">Hadiah Pernikahan</h2>
                     
-                    <p class="text-xs text-slate-600 mt-2 max-w-xs mx-auto text-reveal">
+                    <p class="text-xs text-slate-600 mt-2 max-w-xs mx-auto text-reveal text-reveal-delay-3">
                         Doa dan kehadiran Anda merupakan hadiah terindah bagi kami. Namun, bagi Bapak/Ibu/Saudara/i yang berkenan memberikan tanda kasih, dapat melalui fasilitas berikut:
                     </p>
                 </div>
 
-                <div class="space-y-4 relative z-10 text-reveal">
+                <div class="space-y-4 relative z-10 text-reveal text-reveal-delay-4">
                     <div class="atm-card p-5 rounded-xl relative text-left">
                         <div class="flex justify-between items-start mb-3 relative z-10">
                             <div class="w-9 h-7 bg-gradient-to-br from-[#ffd700] to-[#b8860b] rounded-[4px] border border-[#daa520] shadow-sm flex items-center justify-center overflow-hidden opacity-90">
@@ -579,17 +593,16 @@
                 </div>
             </section>
 
-            <!-- RSVP & UCAPAN (PINDAH KE PALING BAWAH SEBELUM TERIMA KASIH) -->
+            <!-- UCAPAN SESUATU (RSVP) - DIPINDAHKAN KE PALING BAWAH SEBELUM TERIMA KASIH -->
             <section id="rsvp" class="card-lux scroll-animate">
                 <div class="text-center mb-6 relative z-10">
-                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal">Ucapan Sesuatu</h2>
-                    <p class="text-xs text-slate-600 mt-1 max-w-xs mx-auto text-reveal">
+                    <h2 class="font-serif text-2xl text-[#50C878] mt-1 text-reveal text-reveal-delay-1">Ucapan Sesuatu</h2>
+                    <p class="text-xs text-slate-600 mt-1 max-w-xs mx-auto text-reveal text-reveal-delay-2">
                         Mohon isi formulir di bawah ini untuk mengirimkan ucapan & doa restu.
                     </p>
                 </div>
 
-                <form id="rsvpForm" onsubmit="submitRSVP(event)" class="bg-white/70 p-5 rounded-2xl border border-[#50C878]/40 space-y-4 mb-8 shadow-sm relative z-10 backdrop-blur-sm text-reveal">
-                    <!-- 3-Column Statistics Grid -->
+                <form id="rsvpForm" onsubmit="submitRSVP(event)" class="bg-white/70 p-5 rounded-2xl border border-[#50C878]/40 space-y-4 mb-8 shadow-sm relative z-10 backdrop-blur-sm text-reveal text-reveal-delay-3">
                     <div class="grid grid-cols-3 gap-2">
                         <div class="bg-slate-100/90 p-2.5 rounded-xl border border-slate-300 text-center">
                             <span class="text-[9px] uppercase tracking-wider text-slate-500 block font-semibold">Total</span>
@@ -626,7 +639,7 @@
                     </button>
                 </form>
 
-                <div class="mt-8 border-t border-[#50C878]/40 pt-6 relative z-10 text-reveal">
+                <div class="mt-8 border-t border-[#50C878]/40 pt-6 relative z-10 text-reveal text-reveal-delay-4">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="font-serif text-base font-bold text-[#50C878]">Ucapan &amp; Doa Restu</h3>
                         <span id="wishesCount" class="text-[10px] font-bold bg-[#50C878]/10 text-[#50C878] px-2.5 py-1 rounded-full border border-[#50C878]/50">0 Ucapan</span>
@@ -709,14 +722,22 @@
             const icon = document.getElementById('musicIcon');
             if (isAudioPlaying) {
                 if (audio) audio.pause();
+                if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+                    try { ytPlayer.pauseVideo(); } catch(e){}
+                }
                 isAudioPlaying = false;
                 if(icon) icon.classList.add('paused-spin');
             } else {
                 if (audio) {
                     audio.volume = 1.0;
                     audio.play().catch(e => {
-                        console.log('Audio autoplay blocked, trying fallback', e);
+                        console.log('Audio element blocked, trying YouTube fallback', e);
+                        if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+                            try { ytPlayer.playVideo(); } catch(err){}
+                        }
                     });
+                } else if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+                    try { ytPlayer.playVideo(); } catch(err){}
                 }
                 isAudioPlaying = true;
                 if(icon) icon.classList.remove('paused-spin');
@@ -735,10 +756,27 @@
                 if (cover) cover.style.display = 'none';
                 if (main) main.classList.remove('hidden');
                 if (musicWidget) musicWidget.classList.remove('hidden');
+                initScrollAnimations();
                 startCountdownTimer();
                 fetchWishes();
             }, 800);
         };
+
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+            
+            // Fallback untuk memastikan konten selalu muncul
+            setTimeout(() => {
+                document.querySelectorAll('.scroll-animate').forEach(el => el.classList.add('is-visible'));
+            }, 1200);
+        }
 
         function startCountdownTimer() {
             const targetDate = new Date('December 27, 2026 08:00:00').getTime();
@@ -804,7 +842,6 @@
             window.open(url, '_blank');
         };
 
-        // Memulai daftar ucapan dengan kosong bersih
         let localWishesFallback = [];
 
         window.submitRSVP = async function(event) {
@@ -832,7 +869,9 @@
                 showToast('Ucapan berhasil dikirim!');
             } catch (e) {
                 console.error("Error submitting:", e);
-                showToast('Berhasil dikirim secara lokal.');
+                localWishesFallback.unshift({ name, status, message, date: new Date().toLocaleDateString('id-ID') });
+                renderWishes(localWishesFallback);
+                showToast('Ucapan berhasil dikirim secara lokal.');
             } finally {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
