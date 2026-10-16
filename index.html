@@ -877,25 +877,35 @@
             }
         };
 
+        let isRealtimeActive = false;
+
         async function fetchWishes() {
             if (supabaseClient) {
                 try {
+                    // 1. Tarik data dari database
                     const { data, error } = await supabaseClient.from('ucapan').select('*').order('created_at', { ascending: false });
                     if (error) throw error;
+                    
                     const formatted = (data || []).map(item => ({
                         name: item.name,
                         status: item.status,
                         message: item.message,
                         date: item.created_at ? new Date(item.created_at).toLocaleDateString('id-ID') : new Date().toLocaleDateString('id-ID')
                     }));
+                    
                     renderWishes(formatted);
 
-                    supabaseClient.channel('public:ucapan')
-                        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ucapan' }, payload => {
-                            fetchWishes();
-                        }).subscribe();
+                    // 2. Nyalakan Real-Time HANYA SEKALI
+                    if (!isRealtimeActive) {
+                        supabaseClient.channel('custom-insert-channel')
+                            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ucapan' }, payload => {
+                                fetchWishes(); // Tarik otomatis jika ada ucapan baru dari HP orang lain
+                            }).subscribe();
+                        
+                        isRealtimeActive = true; // Tandai sudah menyala
+                    }
                 } catch(err) {
-                    console.log('Supabase fetch notice, using fallback');
+                    console.error('Error saat menarik data:', err);
                     renderWishes(localWishesFallback);
                 }
             } else {
