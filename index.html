@@ -601,18 +601,21 @@
                 </div>
 
                 <form id="rsvpForm" onsubmit="submitRSVP(event)" class="bg-white/70 p-5 rounded-2xl border border-[#50C878]/40 space-y-4 mb-8 shadow-sm relative z-10 backdrop-blur-sm text-reveal text-reveal-delay-3">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="bg-slate-100/90 p-2.5 rounded-xl border border-slate-300 text-center">
-                            <span class="text-[9px] uppercase tracking-wider text-slate-500 block font-semibold">Total</span>
-                            <span id="statTotal" class="font-bold text-sm text-[#50C878]">0</span>
+                    <!-- STATISTIK KOTAK (Total di atas, Hadir & Tidak Hadir di bawah berjejer) -->
+                    <div class="space-y-2">
+                        <div class="bg-slate-100/90 p-3 rounded-xl border border-slate-300 text-center shadow-sm">
+                            <span class="text-[10px] uppercase tracking-wider text-slate-500 block font-semibold">Total Ucapan</span>
+                            <span id="statTotal" class="font-bold text-base text-[#50C878]">0</span>
                         </div>
-                        <div class="bg-emerald-50/90 p-2.5 rounded-xl border border-emerald-200 text-center">
-                            <span class="text-[9px] uppercase tracking-wider text-emerald-600 block font-semibold">Hadir</span>
-                            <span id="statHadir" class="font-bold text-sm text-emerald-600">0</span>
-                        </div>
-                        <div class="bg-red-50/90 p-2.5 rounded-xl border border-red-200 text-center">
-                            <span class="text-[9px] uppercase tracking-wider text-red-500 block font-semibold">Tidak Hadir</span>
-                            <span id="statTidakHadir" class="font-bold text-sm text-red-500">0</span>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-emerald-50/90 p-2.5 rounded-xl border border-emerald-200 text-center">
+                                <span class="text-[9px] uppercase tracking-wider text-emerald-600 block font-semibold">Hadir</span>
+                                <span id="statHadir" class="font-bold text-sm text-emerald-600">0</span>
+                            </div>
+                            <div class="bg-red-50/90 p-2.5 rounded-xl border border-red-200 text-center">
+                                <span class="text-[9px] uppercase tracking-wider text-red-500 block font-semibold">Tidak Hadir</span>
+                                <span id="statTidakHadir" class="font-bold text-sm text-red-500">0</span>
+                            </div>
                         </div>
                     </div>
 
@@ -692,9 +695,6 @@
     
     <!-- SUPABASE & APP SCRIPT -->
     <script>
-        // ----------------------------------------------------
-        // SETUP SUPABASE
-        // ----------------------------------------------------
         const SUPABASE_URL = 'https://szyvfknblbymomofqnpx.supabase.co'; 
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6eXZma25ibGJ5bW9tb2ZxbnB4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NjM4OTUsImV4cCI6MjEwNzUzOTg5NX0.YpuEftjvh-7m0AHoggpAtDF3dpGxkbFKkRWDnceCLbw';
         
@@ -882,7 +882,6 @@
         async function fetchWishes() {
             if (supabaseClient) {
                 try {
-                    // 1. Tarik data dari database
                     const { data, error } = await supabaseClient.from('ucapan').select('*').order('created_at', { ascending: false });
                     if (error) throw error;
                     
@@ -895,14 +894,13 @@
                     
                     renderWishes(formatted);
 
-                    // 2. Nyalakan Real-Time HANYA SEKALI
                     if (!isRealtimeActive) {
                         supabaseClient.channel('custom-insert-channel')
                             .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'ucapan' }, payload => {
-                                fetchWishes(); // Tarik otomatis jika ada ucapan baru dari HP orang lain
+                                fetchWishes();
                             }).subscribe();
                         
-                        isRealtimeActive = true; // Tandai sudah menyala
+                        isRealtimeActive = true;
                     }
                 } catch(err) {
                     console.error('Error saat menarik data:', err);
