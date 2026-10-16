@@ -864,6 +864,8 @@
                 }
                 document.getElementById('rsvpForm').reset();
                 showToast('Ucapan berhasil dikirim!');
+                fetchWishes();
+                
             } catch (e) {
                 console.error("Error submitting:", e);
                 localWishesFallback.unshift({ name, status, message, date: new Date().toLocaleDateString('id-ID') });
