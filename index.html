@@ -181,6 +181,25 @@
         .c-delay-4 { animation-delay: 0.8s; }
         .c-delay-5 { animation-delay: 1.0s; }
         .c-delay-6 { animation-delay: 1.2s; }
+
+        @keyframes flapLeft { 0%, 100% { transform: rotateY(0deg); } 50% { transform: rotateY(65deg); } }
+        @keyframes flapRight { 0%, 100% { transform: rotateY(0deg); } 50% { transform: rotateY(65deg); } }
+        .wing-l { animation: flapLeft 0.15s ease-in-out infinite alternate; transform-origin: 50% 50%; }
+        .wing-r { animation: flapRight 0.15s ease-in-out infinite alternate; transform-origin: 50% 50%; }
+        
+        @keyframes flyPath1 {
+            0% { transform: translate(0, 0) rotate(15deg); }
+            33% { transform: translate(20px, -30px) rotate(25deg) scale(1.1); }
+            66% { transform: translate(-15px, -50px) rotate(5deg) scale(0.9); }
+            100% { transform: translate(0, 0) rotate(15deg); }
+        }
+        @keyframes flyPath2 {
+            0% { transform: translate(0, 0) rotate(-15deg); }
+            50% { transform: translate(-30px, 40px) rotate(-30deg) scale(1.15); }
+            100% { transform: translate(0, 0) rotate(-15deg); }
+        }
+        .butterfly-fly-1 { animation: flyPath1 12s ease-in-out infinite; }
+        .butterfly-fly-2 { animation: flyPath2 15s ease-in-out infinite; }
     </style>
 </head>
 <body class="bg-bgDarker text-slate-800 antialiased font-sans selection:bg-[#50C878] selection:text-white overflow-x-hidden">
@@ -299,6 +318,23 @@
                 </span>
                 
                 <div class="mb-10 text-reveal text-reveal-delay-2 flex flex-col items-center justify-center space-y-1">
+                    <div class="absolute -top-6 -right-2 sm:-right-8 z-0 w-12 h-12 text-[#FFD700] drop-shadow-xl opacity-90 pointer-events-none butterfly-fly-1">
+                        <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full">
+                            <ellipse cx="50" cy="50" rx="2" ry="18" fill="#A67B5B" />
+                            <path d="M 49 32 Q 40 10 30 15 M 51 32 Q 60 10 70 15" stroke="#A67B5B" stroke-width="1.5" fill="none"/>
+                            <g class="wing-l"><path d="M 48 40 C 20 10 0 30 47 55 C 20 60 10 90 48 70 Z" opacity="0.85"/></g>
+                            <g class="wing-r"><path d="M 52 40 C 80 10 100 30 53 55 C 80 60 90 90 52 70 Z" opacity="0.85"/></g>
+                        </svg>
+                    </div>
+                    <div class="absolute -bottom-2 -left-4 sm:-left-8 z-0 w-9 h-9 text-[#FFD700] drop-shadow-xl opacity-80 pointer-events-none butterfly-fly-2" style="animation-delay: 1.5s;">
+                        <svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full transform scale-x-[-1]">
+                            <ellipse cx="50" cy="50" rx="2" ry="18" fill="#A67B5B" />
+                            <path d="M 49 32 Q 40 10 30 15 M 51 32 Q 60 10 70 15" stroke="#A67B5B" stroke-width="1.5" fill="none"/>
+                            <g class="wing-l"><path d="M 48 40 C 20 10 0 30 47 55 C 20 60 10 90 48 70 Z" opacity="0.85"/></g>
+                            <g class="wing-r"><path d="M 52 40 C 80 10 100 30 53 55 C 80 60 90 90 52 70 Z" opacity="0.85"/></g>
+                        </svg>
+                    </div>
+                    
                     <span class="font-cursive text-7xl sm:text-8xl text-[#FFD700] drop-shadow-md leading-none relative -top-2">Rafiif</span>
                     <span class="font-cursive text-5xl sm:text-6xl text-slate-400 drop-shadow-sm leading-none py-1 ">&amp;</span>
                     <span class="font-cursive text-7xl sm:text-8xl text-[#FFD700] drop-shadow-md leading-none relative top-2">Riza</span>
