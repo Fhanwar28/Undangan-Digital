@@ -89,10 +89,10 @@
         * { scrollbar-width: none; -ms-overflow-style: none; }
         *::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
-        .wishes-scrollbar { scrollbar-width: thin; scrollbar-color: #FFD700 transparent; }
+        .wishes-scrollbar { scrollbar-width: thin; scrollbar-color: #50C878 transparent; }
         .wishes-scrollbar::-webkit-scrollbar { display: block !important; width: 6px; }
         .wishes-scrollbar::-webkit-scrollbar-track { background: rgba(241, 245, 249, 0.5); border-radius: 10px; }
-        .wishes-scrollbar::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 10px; }
+        .wishes-scrollbar::-webkit-scrollbar-thumb { background: #50C878; border-radius: 10px; }
 
         @keyframes discRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .animate-disc-spin { animation: discRotate 5s linear infinite; }
@@ -116,7 +116,7 @@
         }
         .falling-leaf {
             position: absolute; width: 14px; height: 14px;
-            background: linear-gradient(135deg, #74eba5 0%, #FFD700 100%);
+            background: linear-gradient(135deg, #74eba5 0%, #50C878 100%);
             border-radius: 0 60% 0 60%;
             box-shadow: 0 0 8px rgba(80, 200, 120, 0.5);
             animation: leafFall linear infinite;
@@ -128,13 +128,13 @@
             90% { opacity: 0.4; }
             100% { transform: translateY(-10vh) scale(1.2) rotate(25deg); opacity: 0; }
         }
-        .animate-float-heart-bg { position: absolute; color: #FFD700; animation: floatHeartBg linear infinite; }
+        .animate-float-heart-bg { position: absolute; color: #50C878; animation: floatHeartBg linear infinite; }
 
         @keyframes twinkleSparkle {
             0%, 100% { transform: scale(0.6) rotate(0deg); opacity: 0.2; }
             50% { transform: scale(1.4) rotate(90deg); opacity: 0.8; }
         }
-        .animate-twinkle { position: absolute; color: #FFD700; animation: twinkleSparkle ease-in-out infinite alternate; }
+        .animate-twinkle { position: absolute; color: #50C878; animation: twinkleSparkle ease-in-out infinite alternate; }
 
         @keyframes rotateRings {
             0% { transform: rotate(0deg) scale(1); }
@@ -183,27 +183,27 @@
         .c-delay-6 { animation-delay: 1.2s; }
     </style>
 </head>
-<body class="bg-bgDarker text-slate-800 antialiased font-sans selection:bg-[#FFD700] selection:text-white overflow-x-hidden">
+<body class="bg-bgDarker text-slate-800 antialiased font-sans selection:bg-[#50C878] selection:text-white overflow-x-hidden">
 
     <!-- COVER SCREEN -->
     <div id="coverScreen" class="fixed inset-0 z-50 flex items-center justify-center bg-bgDark text-white transition-opacity duration-1000 h-screen-dvh overflow-hidden select-none">
         <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-            <div class="absolute -top-20 -left-20 w-80 h-80 bg-[#FFD700] rounded-full blur-[120px] animate-blob opacity-45"></div>
+            <div class="absolute -top-20 -left-20 w-80 h-80 bg-[#50C878] rounded-full blur-[120px] animate-blob opacity-45"></div>
             <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-[#113825] rounded-full blur-[140px] animate-blob" style="animation-delay: 2s;"></div>
             
-            <div class="absolute inset-0 flex items-center justify-center opacity-[0.07] text-[#FFD700]">
+            <div class="absolute inset-0 flex items-center justify-center opacity-[0.07] text-[#50C878]">
                 <div class="animate-rotate-rings w-[120vw] h-[120vw] max-w-[550px] max-h-[550px]">
                     <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
                         <circle cx="40" cy="50" r="28"/><circle cx="60" cy="50" r="28"/>
                     </svg>
                 </div>
             </div>
-            <div class="animate-twinkle absolute top-[15%] left-[22%] w-6 h-6 text-[#FFD700] opacity-60" style="animation-duration: 3s;">
+            <div class="animate-twinkle absolute top-[15%] left-[22%] w-6 h-6 text-[#50C878] opacity-60" style="animation-duration: 3s;">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l3.09 8.91L24 12l-8.91 3.09L12 24l-3.09-8.91L0 12l8.91-3.09z"/></svg>
             </div>
         </div>
 
-        <div class="absolute inset-5 sm:inset-8 border-[1.5px] border-dashed border-[#FFD700]/70 pointer-events-none z-10 rounded-2xl cover-anim-zoom c-delay-1"></div>
+        <div class="absolute inset-5 sm:inset-8 border-[1.5px] border-dashed border-[#50C878]/70 pointer-events-none z-10 rounded-2xl cover-anim-zoom c-delay-1"></div>
 
         <!-- ORNAMEN BUNGA POJOK -->
         <!-- Kiri Atas -->
@@ -224,7 +224,7 @@
             </div>
 
             <div class="my-auto flex flex-col items-center justify-center py-2">
-                <div class="relative w-52 xs:w-56 sm:w-60 rounded-[32px] shadow-2xl ring-4 ring-[#FFD700]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
+                <div class="relative w-52 xs:w-56 sm:w-60 rounded-[32px] shadow-2xl ring-4 ring-[#50C878]/40 transform hover:scale-[1.02] transition-transform duration-300 cover-anim-zoom c-delay-3">
                     <div class="w-full aspect-[3/4] rounded-[28px] bg-[#102A20] relative flex items-center justify-center overflow-hidden shadow-inner">
                         <img src="Foto-cover-undangan.jpg.jpeg" class="w-full h-full object-cover object-[center_70%] scale-125">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -244,7 +244,7 @@
                     <p id="guestNameDisplay" class="font-serif text-[18px] sm:text-[18px] text-[#FFD700] font-semibold leading-tight truncate px-2 relative -top-7">Tamu Undangan</p>
                 </div>
                 <div class="cover-anim-up c-delay-6">
-                    <button onclick="openInvitation()" class="group relative inline-flex items-center justify-center gap-2 px-7 py-3 bg-gradient-to-r from-[#FFD700] to-[#3ea05f] text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 text-xs border border-white/30 -translate-y-4">
+                    <button onclick="openInvitation()" class="group relative inline-flex items-center justify-center gap-2 px-7 py-3 bg-gradient-to-r from-[#50C878] to-[#3ea05f] text-white font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 active:scale-95 text-xs border border-white/30 -translate-y-4">
                         <i class="fa-regular fa-envelope transition-transform group-hover:scale-110 text-xs"></i>
                         Buka Undangan
                     </button>
@@ -255,7 +255,7 @@
 
     <!-- FLOATING MUSIC BUTTON -->
     <div id="musicFloatingWidget" class="fixed top-4 right-4 z-50 hidden flex items-center gap-2">
-        <button id="musicToggleBtn" onclick="toggleAudioPlayback()" title="Putar / Jeda Musik" class="w-11 h-11 rounded-full bg-bgDark/90 border-2 border-[#FFD700]/80 shadow-2xl flex items-center justify-center text-[#FFD700] backdrop-blur-md active:scale-90 transition group relative overflow-hidden">
+        <button id="musicToggleBtn" onclick="toggleAudioPlayback()" title="Putar / Jeda Musik" class="w-11 h-11 rounded-full bg-bgDark/90 border-2 border-[#50C878]/80 shadow-2xl flex items-center justify-center text-[#FFD700] backdrop-blur-md active:scale-90 transition group relative overflow-hidden">
             <i id="musicIcon" class="fa-solid fa-compact-disc text-xl animate-disc-spin"></i>
         </button>
     </div>
@@ -280,10 +280,10 @@
             <div class="animate-float-heart-bg left-[15%] text-lg" style="animation-duration: 15s; animation-delay: 0s;"><i class="fa-solid fa-heart"></i></div>
             <div class="animate-float-heart-bg left-[85%] text-2xl" style="animation-duration: 18s; animation-delay: 4s;"><i class="fa-solid fa-heart"></i></div>
 
-            <div class="absolute top-[20%] right-[5%] opacity-[0.25] text-[#FFD700] animate-rotate-rings w-40 h-40">
+            <div class="absolute top-[20%] right-[5%] opacity-[0.25] text-[#50C878] animate-rotate-rings w-40 h-40">
                 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="40" cy="50" r="25"/><circle cx="60" cy="50" r="25"/></svg>
             </div>
-            <div class="absolute top-[65%] left-[2%] opacity-[0.2] text-[#FFD700] animate-rotate-rings w-48 h-48" style="animation-direction: reverse; animation-duration: 35s;">
+            <div class="absolute top-[65%] left-[2%] opacity-[0.2] text-[#50C878] animate-rotate-rings w-48 h-48" style="animation-direction: reverse; animation-duration: 35s;">
                 <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="40" cy="50" r="25"/><circle cx="60" cy="50" r="25"/></svg>
             </div>
 
@@ -294,7 +294,7 @@
         <!-- HERO SECTION -->
         <section id="hero" class="relative min-h-screen-dvh flex flex-col justify-between items-center text-center p-6 bg-cover bg-center overflow-hidden z-20" style="background-position: center 30%; background-image: linear-gradient(to bottom, rgba(7, 21, 16, 0.85), rgba(7, 21, 16, 1)), url('https://lh3.googleusercontent.com/d/1qQfEiRB9IScRcLGW6wUsngL4TLoO864w?q=80&w=1200&auto=format&fit=crop');">
             <div class="w-full flex-1 flex flex-col items-center justify-center scroll-animate relative z-10 pt-16">
-                <span class="px-5 py-2 bg-[#FFD700]/15 rounded-full text-[8px] sm:text-xs uppercase tracking-[0.4em] text-[#FFD700] font-extrabold mb-6 text-reveal text-reveal-delay-1 border border-[#FFD700]/40 shadow-sm relative -top-8">
+                <span class="px-5 py-2 bg-[#50C878]/15 rounded-full text-[8px] sm:text-xs uppercase tracking-[0.4em] text-[#FFD700] font-extrabold mb-6 text-reveal text-reveal-delay-1 border border-[#FFD700]/40 shadow-sm relative -top-8">
                     THE WEDDING OF
                 </span>
                 
@@ -326,22 +326,22 @@
              <!-- GAMBAR BUNGA BESAR (Penyambung Atas & Bawah) -->
             <div class="relative w-full flex justify-center -mt-24 mb-2 scroll-animate">
                 <img src="bunga-isi-undangan.png" 
-                     onerror="this.outerHTML='<div class=\'text-[#FFD700] opacity-95 drop-shadow-2xl flex items-center justify-center gap-0 hover:scale-105 transition-transform duration-700\'><i class=\'fa-solid fa-leaf text-5xl transform -rotate-[60deg] mt-8 opacity-80\'></i><i class=\'fa-brands fa-pagelines text-[90px] mx-[-10px] z-10\'></i><i class=\'fa-solid fa-leaf text-5xl transform rotate-[60deg] scale-x-[-1] mt-8 opacity-80\'></i></div>'" 
+                     onerror="this.outerHTML='<div class=\'text-[#50C878] opacity-95 drop-shadow-2xl flex items-center justify-center gap-0 hover:scale-105 transition-transform duration-700\'><i class=\'fa-solid fa-leaf text-5xl transform -rotate-[60deg] mt-8 opacity-80\'></i><i class=\'fa-brands fa-pagelines text-[90px] mx-[-10px] z-10\'></i><i class=\'fa-solid fa-leaf text-5xl transform rotate-[60deg] scale-x-[-1] mt-8 opacity-80\'></i></div>'" 
                      alt="Bunga Besar Penyambung" 
                      class="w-80 sm:w-80 h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700">
             </div>
             
             <!-- QUOTE -->
             <section id="quote" class="card-lux text-center scroll-animate">
-                <div class="absolute top-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute top-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
 
                 <div class="flex items-center justify-center gap-2 mb-4 relative z-10 text-reveal text-reveal-delay-1">
-                    <span class="w-12 h-[1px] bg-[#FFD700]"></span>
-                    <i class="fa-solid fa-leaf text-[#FFD700] text-sm"></i>
-                    <span class="w-12 h-[1px] bg-[#FFD700]"></span>
+                    <span class="w-12 h-[1px] bg-[#50C878]"></span>
+                    <i class="fa-solid fa-leaf text-[#50C878] text-sm"></i>
+                    <span class="w-12 h-[1px] bg-[#50C878]"></span>
                 </div>
                 <p class="font-serif text-xs md:text-sm text-slate-700 italic leading-relaxed mb-4 relative z-10 font-medium text-reveal text-reveal-delay-2">
                     “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri, agar kamu merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”
@@ -351,10 +351,10 @@
 
             <!-- MEMPELAI -->
             <section id="mempelai" class="card-lux text-center scroll-animate !pb-10">
-                <div class="absolute top-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute top-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
 
                 <div class="mb-6 relative z-10">
                     <h2 class="font-arabic text-2xl text-[#FFD700] mb-3 text-reveal text-reveal-delay-1">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h2>
@@ -449,7 +449,7 @@
                         </div>
                     </div>
 
-                    <button onclick="addToCalendar()" class="inline-flex items-center gap-2 px-7 py-3 bg-gradient-to-r from-[#FFD700] to-[#3ea05f] text-white rounded-full text-xs font-bold shadow-xl hover:shadow-2xl transition active:scale-95 text-reveal text-reveal-delay-3 border border-white/40">
+                    <button onclick="addToCalendar()" class="inline-flex items-center gap-2 px-7 py-3 bg-gradient-to-r from-[#50C878] to-[#3ea05f] text-white rounded-full text-xs font-bold shadow-xl hover:shadow-2xl transition active:scale-95 text-reveal text-reveal-delay-3 border border-white/40">
                         <i class="fa-regular fa-calendar-plus text-white text-sm"></i> Simpan ke Kalender
                     </button>
                 </div>
@@ -457,10 +457,10 @@
 
             <!-- ACARA -->
             <section id="acara" class="card-lux text-center scroll-animate">
-                <div class="absolute top-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute top-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
 
                 <div class="relative z-10 mb-6">
                     <h2 class="font-serif text-2xl text-[#FFD700] mt-1 text-reveal text-reveal-delay-2 font-bold">Waktu dan Tempat Acara</h2>
@@ -468,8 +468,8 @@
 
                 <div class="space-y-4 relative z-10">
                     <!-- Bubble Akad Nikah -->
-                    <div class="bg-white/70 backdrop-blur-sm p-5 rounded-2xl border border-[#FFD700]/40 shadow-sm text-reveal text-reveal-delay-3">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#FFD700]/15 border border-[#FFD700]/40 flex items-center justify-center text-[#FFD700] shadow-sm">
+                    <div class="bg-white/70 backdrop-blur-sm p-5 rounded-2xl border border-[#50C878]/40 shadow-sm text-reveal text-reveal-delay-3">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#50C878]/15 border border-[#50C878]/40 flex items-center justify-center text-[#50C878] shadow-sm">
                             <i class="fa-solid fa-ring text-base"></i>
                         </div>
                         <h3 class="font-serif text-xl font-bold text-slate-900">Akad Nikah</h3>
@@ -478,8 +478,8 @@
                     </div>
 
                     <!-- Bubble Resepsi -->
-                    <div class="bg-white/70 backdrop-blur-sm p-5 rounded-2xl border border-[#FFD700]/40 shadow-sm text-reveal text-reveal-delay-3">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#FFD700]/15 border border-[#FFD700]/40 flex items-center justify-center text-[#FFD700] shadow-sm">
+                    <div class="bg-white/70 backdrop-blur-sm p-5 rounded-2xl border border-[#50C878]/40 shadow-sm text-reveal text-reveal-delay-3">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#50C878]/15 border border-[#50C878]/40 flex items-center justify-center text-[#50C878] shadow-sm">
                             <i class="fa-solid fa-glass-cheers text-base"></i>
                         </div>
                         <h3 class="font-serif text-xl font-bold text-slate-900">Resepsi Pernikahan</h3>
@@ -488,8 +488,8 @@
                     </div>
 
                     <!-- Bubble Lokasi -->
-                    <div class="bg-white/70 backdrop-blur-sm p-5 rounded-2xl border border-[#FFD700]/40 shadow-sm text-reveal text-reveal-delay-4">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#FFD700]/15 border border-[#FFD700]/40 flex items-center justify-center text-[#FFD700] shadow-sm">
+                    <div class="bg-white/70 backdrop-blur-sm p-5 rounded-2xl border border-[#50C878]/40 shadow-sm text-reveal text-reveal-delay-4">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[#50C878]/15 border border-[#50C878]/40 flex items-center justify-center text-[#50C878] shadow-sm">
                             <i class="fa-solid fa-location-dot text-base"></i>
                         </div>
                         <h3 class="font-serif text-lg font-bold text-slate-900">Lokasi Acara</h3>
@@ -511,18 +511,18 @@
 
             <!-- KISAH KAMI -->
             <section id="kisah" class="card-lux scroll-animate !pb-10">
-                <div class="absolute top-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute top-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
                 
                 <div class="text-center mb-6 relative z-10">
                     <h2 class="font-serif text-2xl text-[#FFD700] mt-1 text-reveal text-reveal-delay-2 font-bold">Perjalanan Kisah Cinta</h2>
                 </div>
 
-                <div class="relative border-l-2 border-[#FFD700]/50 ml-2 space-y-8 text-left z-10">
+                <div class="relative border-l-2 border-[#50C878]/50 ml-2 space-y-8 text-left z-10">
                     <div class="ml-6 relative text-reveal text-reveal-delay-2">
-                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#FFD700] border-2 border-white shadow-md"></div>
+                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow-md"></div>
                         <span class="relative -left-3 text-[10px] font-bold text-emerald-700 uppercase tracking-widest bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">Awal Pertemuan</span>
                         <p class="relative -left-3 text-xs text-slate-700 mt-2 leading-relaxed font-medium text-justify">
                             Tidak semua pertemuan hadir dengan cara yang istimewa. Ada yang bermula begitu sederhana, hanya dari sebuah persahabatan di tempat kerja. Di antara kesibukan, percakapan sederhana tumbuh menjadi kisah yang memiliki tempat tersendiri di hati kami.
@@ -530,7 +530,7 @@
                     </div>
 
                     <div class="ml-6 relative text-reveal text-reveal-delay-3">
-                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#FFD700] border-2 border-white shadow-md"></div>
+                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow-md"></div>
                         <span class=" relative -left-3 whitespace-nowrap text-[10px] font-bold text-emerald-700 uppercase tracking-widest bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">1 Februari 2026 • Mengenal Lebih Dekat</span>
                         <p class=" relative -left-3 text-xs text-slate-700 mt-2 leading-relaxed font-medium text-justify">
                             Waktu membawa kami pada banyak cerita. Kami berbagi tawa, impian, dan harapan. Kami belajar bahwa rasa hadir bukan hanya melalui kata-kata, melainkan melalui perhatian dan kenyamanan.
@@ -538,7 +538,7 @@
                     </div>
 
                     <div class="ml-6 relative text-reveal text-reveal-delay-4">
-                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#FFD700] border-2 border-white shadow-md"></div>
+                        <div class="absolute -left-[33px] top-1 w-4 h-4 rounded-full bg-[#50C878] border-2 border-white shadow-md"></div>
                         <span class=" relative -left-3 whitespace-nowrap text-[10px] font-bold text-emerald-700 uppercase tracking-widest bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">27 Desember 2026 • Menuju Pernikahan</span>
                         <p class="relative -left-3 text-xs text-slate-700 mt-2 leading-relaxed font-medium text-justify">
                             Kini bukan lagi tentang aku dan kamu, melainkan tentang kita. Dengan doa dan restu kedua keluarga, kami siap membuka lembaran baru—menjadi teman hidup, tempat pulang, dan tempat berbagi cerita.
@@ -549,10 +549,10 @@
 
             <!-- GALERI FOTO -->
             <section id="galeri" class="card-lux text-center scroll-animate !pb-8">
-                <div class="absolute top-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute top-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
 
                 <div class="text-center mb-6 relative z-10">
                     <h2 class="font-serif text-2xl text-[#FFD700] mt-1 text-reveal text-reveal-delay-1 font-bold relative -top-2">Galeri Foto</h2>
@@ -562,28 +562,28 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-3 relative z-10 px-1">
-                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-1 border border-[#FFD700]/30">
+                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-1 border border-[#50C878]/30">
                         <img src="Foto-mempelai1.jpeg" alt="Galeri 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#FFD700]/30">
+                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#50C878]/30">
                         <img src="Foto-mempelai2.jpeg" alt="Galeri 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-3 border border-[#FFD700]/30">
+                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-3 border border-[#50C878]/30">
                         <img src="Foto-mempelai3.jpeg" alt="Galeri 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-4 border border-[#FFD700]/30">
+                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-4 border border-[#50C878]/30">
                         <img src="Foto-mempelai4.jpeg" alt="Galeri 4" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 style="object-position: center 20% !important;">
                     </div>
-                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-1 border border-[#FFD700]/30">
+                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-1 border border-[#50C878]/30">
                         <img src="Foto-mempelai5.jpg.jpeg" alt="Galeri 5" class="w-full h-full object-cover object-[center_100%] hover:scale-110 transition-transform duration-500">
                     </div>
-                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#FFD700]/30">
+                    <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#50C878]/30">
                         <img src="Foto-mempelai6.jpg.jpeg" alt="Galeri 6" class="w-full h-full object-cover object-[center_100%] hover:scale-110 transition-transform duration-500">
                     </div>
-                     <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#FFD700]/30">
+                     <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#50C878]/30">
                         <img src="Foto-mempelai7.jpeg" alt="Galeri 7" class="w-full h-full object-cover object-[center_100%] hover:scale-110 transition-transform duration-500">
                     </div>
-                     <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#FFD700]/30">
+                     <div class="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm text-reveal text-reveal-delay-2 border border-[#50C878]/30">
                         <img src="Foto-mempelai8.jpeg" alt="Galeri 8" class="w-full h-full object-cover object-[center_100%] hover:scale-110 transition-transform duration-500">
                     </div>
                 </div>
@@ -591,13 +591,13 @@
 
             <!-- HADIAH PERNIKAHAN -->
             <section class="card-lux text-center scroll-animate">
-                <div class="absolute top-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute top-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
 
                 <div class="mb-6 relative z-10">
-                    <div class="w-12 h-12 mx-auto mb-3 rounded-full border border-[#FFD700]/50 flex items-center justify-center text-[#FFD700] text-reveal text-reveal-delay-1 bg-[#FFD700]/15 shadow-sm">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-full border border-[#50C878]/50 flex items-center justify-center text-[#50C878] text-reveal text-reveal-delay-1 bg-[#50C878]/15 shadow-sm">
                         <i class="fa-solid fa-gift text-base"></i>
                     </div>
                     <h2 class="font-serif text-2xl text-[#FFD700] mt-1 text-reveal text-reveal-delay-2 font-bold">Hadiah Pernikahan</h2>
@@ -610,7 +610,7 @@
                 <div class="space-y-4 relative z-10 text-reveal text-reveal-delay-4">
                     <div class="atm-card p-5 rounded-2xl relative text-left">
                         <div class="flex justify-between items-start mb-3 relative z-10">
-                            <div class="w-10 h-8 bg-gradient-to-br from-[#ffd700] to-[#b8860b] rounded-[6px] border border-[#daa520] shadow-md flex items-center justify-center overflow-hidden opacity-95">
+                            <div class="w-10 h-8 bg-gradient-to-br from-[#50C878] to-[#b8860b] rounded-[6px] border border-[#daa520] shadow-md flex items-center justify-center overflow-hidden opacity-95">
                                 <div class="w-full h-full border-[0.5px] border-[#8b6508] opacity-30 rounded-[4px] m-0.5 flex flex-col justify-between py-1">
                                     <div class="w-full h-[0.5px] bg-[#8b6508]"></div>
                                     <div class="w-full h-[0.5px] bg-[#8b6508]"></div>
@@ -652,7 +652,7 @@
 
                     <div class="atm-card p-5 rounded-2xl relative text-left">
                         <div class="flex justify-between items-start mb-3 relative z-10">
-                            <div class="w-10 h-8 bg-gradient-to-br from-[#ffd700] to-[#b8860b] rounded-[6px] border border-[#daa520] shadow-md flex items-center justify-center overflow-hidden opacity-95">
+                            <div class="w-10 h-8 bg-gradient-to-br from-[#50C878] to-[#b8860b] rounded-[6px] border border-[#daa520] shadow-md flex items-center justify-center overflow-hidden opacity-95">
                                 <div class="w-full h-full border-[0.5px] border-[#8b6508] opacity-30 rounded-[4px] m-0.5 flex flex-col justify-between py-1">
                                     <div class="w-full h-[0.5px] bg-[#8b6508]"></div>
                                     <div class="w-full h-[0.5px] bg-[#8b6508]"></div>
@@ -675,10 +675,10 @@
 
             <!-- UCAPAN SESUATU (RSVP) -->
             <section id="rsvp" class="card-lux text-center scroll-animate">
-                <div class="absolute top-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute top-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 left-3 text-[#FFD700]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
-                <div class="absolute bottom-3 right-3 text-[#FFD700]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute top-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-45"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 left-3 text-[#50C878]/50 pointer-events-none text-xl transform -rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
+                <div class="absolute bottom-3 right-3 text-[#50C878]/50 pointer-events-none text-xl transform rotate-[135deg]"><i class="fa-solid fa-seedling"></i></div>
                 
                 <div class="text-center mb-6 relative z-10">
                     <h2 class="font-serif text-2xl text-[#FFD700] mt-1 text-reveal text-reveal-delay-1 font-bold">Ucapan & Doa</h2>
@@ -687,7 +687,7 @@
                     </p>
                 </div>
 
-                <form id="rsvpForm" onsubmit="submitRSVP(event)" class="bg-white/95 p-5 rounded-2xl border border-[#FFD700]/40 space-y-4 mb-8 shadow-xl relative z-10 backdrop-blur-md text-reveal text-reveal-delay-3">
+                <form id="rsvpForm" onsubmit="submitRSVP(event)" class="bg-white/95 p-5 rounded-2xl border border-[#50C878]/40 space-y-4 mb-8 shadow-xl relative z-10 backdrop-blur-md text-reveal text-reveal-delay-3">
                     <div class="space-y-2">
                         <div class="bg-slate-100/90 p-3.5 rounded-xl border border-slate-300 text-center shadow-sm">
                             <span class="text-[10px] uppercase tracking-wider text-slate-500 block font-bold">Total Ucapan</span>
@@ -707,29 +707,29 @@
 
                     <div class="text-left">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap</label>
-                        <input type="text" id="rsvpName" required placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#FFD700] outline-none bg-white font-medium">
+                        <input type="text" id="rsvpName" required placeholder="Masukkan nama Anda" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#50C878] outline-none bg-white font-medium">
                     </div>
                     <div class="text-left">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Konfirmasi Kehadiran</label>
-                        <select id="rsvpStatus" required class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#FFD700] outline-none bg-white font-medium">
+                        <select id="rsvpStatus" required class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#50C878] outline-none bg-white font-medium">
                             <option value="Hadir">Hadir</option>
                             <option value="Tidak Hadir">Tidak Hadir</option>
                         </select>
                     </div>
                     <div class="text-left">
                         <label class="block text-xs font-bold text-slate-700 mb-1">Ucapan <span class="font-cursive text-sm text-slate-700 mx-1">&amp;</span> Doa Restu</label>
-                        <textarea id="rsvpMessage" rows="3" required placeholder="Tuliskan doa & ucapan selamat..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#FFD700] outline-none bg-white font-medium"></textarea>
+                        <textarea id="rsvpMessage" rows="3" required placeholder="Tuliskan doa & ucapan selamat..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-[#50C878] outline-none bg-white font-medium"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-[#FFD700] to-[#3ea05f] text-white border border-[#FFD700] rounded-xl text-xs font-bold shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-[#50C878] to-[#3ea05f] text-white border border-[#50C878] rounded-xl text-xs font-bold shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
                         <i class="fa-solid fa-paper-plane text-white"></i> Kirim Ucapan
                     </button>
                 </form>
 
-                <div class="mt-8 border-t border-[#FFD700]/40 pt-6 relative z-10 text-reveal text-reveal-delay-4">
+                <div class="mt-8 border-t border-[#50C878]/40 pt-6 relative z-10 text-reveal text-reveal-delay-4">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="font-serif text-base font-bold text-[#FFD700]">Ucapan <span class="font-cursive text-lg text-[#FFD700] mx-1">&amp;</span> Doa Restu</h3>
-                        <span id="wishesCount" class="text-[10px] font-bold bg-[#FFD700]/15 text-[#FFD700] px-3 py-1 rounded-full border border-[#FFD700]/50 shadow-sm">0 Ucapan</span>
+                        <span id="wishesCount" class="text-[10px] font-bold bg-[#50C878]/15 text-[#50C878] px-3 py-1 rounded-full border border-[#50C878]/50 shadow-sm">0 Ucapan</span>
                     </div>
                     
                     <div id="wishesContainer" class="space-y-3 max-h-[420px] overflow-y-auto pr-2 pb-2 wishes-scrollbar">
@@ -751,7 +751,7 @@
         <section class="pt-12 pb-16 px-6 bg-bgDarker text-white text-center relative z-30">
             <div class="max-w-xs mx-auto space-y-4 relative z-10 pt-4">
                 <div class="pb-2">
-                    <div class="w-12 h-12 mx-auto rounded-full border border-[#FFD700]/60 flex items-center justify-center text-[#FFD700] shadow-lg animate-bounce relative z-20 bg-[#071510]">
+                    <div class="w-12 h-12 mx-auto rounded-full border border-[#50C878]/60 flex items-center justify-center text-[#50C878] shadow-lg animate-bounce relative z-20 bg-[#071510]">
                         <i class="fa-solid fa-heart text-sm"></i>
                     </div>
                 </div>
@@ -771,8 +771,8 @@
     </div>
 
     <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden bg-bgDarker/95 text-white text-xs px-5 py-3 rounded-full shadow-2xl border border-[#FFD700]/40 flex items-center gap-2 backdrop-blur-md transition-all">
-        <i class="fa-solid fa-circle-check text-[#FFD700]"></i>
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden bg-bgDarker/95 text-white text-xs px-5 py-3 rounded-full shadow-2xl border border-[#50C878]/40 flex items-center gap-2 backdrop-blur-md transition-all">
+        <i class="fa-solid fa-circle-check text-[#50C878]"></i>
         <span id="toastMessage">Pesan pemberitahuan</span>
     </div>
 
